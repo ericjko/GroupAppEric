@@ -10,7 +10,7 @@ namespace GroupApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MapsPage();
         }
 
         protected override void OnStart()

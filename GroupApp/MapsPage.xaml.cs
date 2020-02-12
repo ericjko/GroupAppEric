@@ -40,6 +40,8 @@ namespace GroupApp
 
             var newPinPosition = await App.PinDatabase.GetNotesAsync();
         }
+
+        //Add new Location
         async void OnGroupAddedClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NewGroup
@@ -47,6 +49,8 @@ namespace GroupApp
                 BindingContext = new Pins()
             });
         }
+
+
 
 
         //Street, Satellite, Hybrid options

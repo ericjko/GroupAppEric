@@ -9,7 +9,7 @@
     </Entry>
         <Editor
         Placeholder="Enter Details"
-        Text="{Binding Address}"
+        Text="{Binding Details}"
         >
     </Editor>
         <Button

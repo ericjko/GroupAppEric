@@ -5,6 +5,8 @@ using Plugin.Geolocator;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using GroupApp.Models;
+
 
 namespace GroupApp
 {
@@ -32,6 +34,18 @@ namespace GroupApp
             var locator = CrossGeolocator.Current;
             var position = await locator.GetPositionAsync();
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
+
+            //new pin Locations
+            
+
+            var newPinPosition = await App.PinDatabase.GetNotesAsync();
+        }
+        async void OnGroupAddedClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewGroup
+            {
+                BindingContext = new Pins()
+            });
         }
 
 

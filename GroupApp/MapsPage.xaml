@@ -4,8 +4,17 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
     <StackLayout Margin="10">
         <!--Displays initial map-->
-        <maps:Map x:Name="map"/>
-
+        <maps:Map x:Name="map"
+                  ItemsSource="{Binding Locations}">
+                  <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Position="{Binding Position}"
+                              Address="{Binding Address}"
+                              Label="{Binding Description}" />
+                </DataTemplate>    
+            </maps:Map.ItemTemplate>
+            </maps:Map>
+        <!--Street, Satellie, Hybrid Buttons-->
         <Slider Margin="20,0,20,0"
                 Maximum="18"
                 Minimum="1"
@@ -21,6 +30,8 @@
             <Button Text="Hybrid"
                     Clicked="OnButtonClicked" />
         </StackLayout>
+
+
     </StackLayout>
 
 </ContentPage>

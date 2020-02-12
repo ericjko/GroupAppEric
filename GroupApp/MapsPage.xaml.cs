@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GroupApp.ViewModels;
 using Plugin.Geolocator;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -9,18 +10,20 @@ namespace GroupApp
 {
     public partial class MapsPage : ContentPage
     {
-        public bool IsShowingUser { get; set; }
+        //public bool IsShowingUser { get; set; }
 
         public MapsPage()
         {
             InitializeComponent();
+            BindingContext = new PinItemsSourcePageViewModel();
 
-            
+
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
 
             //shows user current location
             map.IsShowingUser = true;
@@ -30,42 +33,6 @@ namespace GroupApp
             var position = await locator.GetPositionAsync();
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
         }
-        //protected override async void OnAppearing()
-        //{
-        //    //Current Location
-        //    base.OnAppearing();
-        //    try
-        //    {
-        //        var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-        //        var location = await Geolocation.GetLocationAsync(request);
-
-        //        if (location != null)
-        //        {
-        //            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-        //        }
-        //        Position position = new Position(location.Latitude, location.Longitude);
-        //        MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
-
-
-        //        //Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map(mapSpan);
-        //    }
-        //    catch (FeatureNotSupportedException fnsEx)
-        //    {
-        //        // Handle not supported on device exception
-        //    }
-        //    catch (FeatureNotEnabledException fneEx)
-        //    {
-        //        // Handle not enabled on device exception
-        //    }
-        //    catch (PermissionException pEx)
-        //    {
-        //        // Handle permission exception
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Unable to get location
-        //    }
-        //}
 
 
         //Street, Satellite, Hybrid options

@@ -8,8 +8,8 @@
         Text="{Binding Address}">
     </Entry>
         <Editor
-        Placeholder="Enter Details"
-        Text="{Binding Details}"
+        Placeholder="Enter Label"
+        Text="{Binding Description}"
         >
     </Editor>
         <Button

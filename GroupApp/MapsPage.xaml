@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupApp.MapsPage"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:GroupApp.ViewModels;">   
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Group"
                      Clicked="OnGroupAddedClicked" />
     </ContentPage.ToolbarItems>
-    <StackLayout Margin="10">
+    <StackLayout>
         <!--Displays initial map-->
         <maps:Map x:Name="map"
                   ItemsSource="{Binding Locations}">
@@ -14,11 +15,11 @@
                 <DataTemplate>
                     <maps:Pin Position="{Binding Position}"
                               Address="{Binding Address}"
-                              Label="{Binding Description}" />
+                              Label="{Binding Description}"
+                              InfoWindowClicked="PinClicked"/>
                 </DataTemplate>    
             </maps:Map.ItemTemplate>
-            </maps:Map>
-        <!--Street, Satellie, Hybrid Buttons-->
+        </maps:Map>
         <Slider Margin="20,0,20,0"
                 Maximum="18"
                 Minimum="1"
@@ -34,8 +35,5 @@
             <Button Text="Hybrid"
                     Clicked="OnButtonClicked" />
         </StackLayout>
-
-
     </StackLayout>
-
 </ContentPage>

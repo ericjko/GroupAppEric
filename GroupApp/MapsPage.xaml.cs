@@ -13,19 +13,16 @@ namespace GroupApp
     public partial class MapsPage : ContentPage
     {
         //public bool IsShowingUser { get; set; }
-
+        
         public MapsPage()
         {
             InitializeComponent();
             BindingContext = new PinItemsSourcePageViewModel();
-
-
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
 
             //shows user current location
             map.IsShowingUser = true;
@@ -35,10 +32,14 @@ namespace GroupApp
             var position = await locator.GetPositionAsync();
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
 
-            //new pin Locations
-            
-
-            var newPinPosition = await App.PinDatabase.GetNotesAsync();
+            //var newPinPosition = await App.PinDatabase.GetNotesAsync();
+        }
+        async void PinClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            await Navigation.PushAsync(new GroupDetailsPage
+            {
+                BindingContext = new Pins()
+            });
         }
 
         //Add new Location

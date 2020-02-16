@@ -2,5 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupApp.GroupDetailsPage"
-             Title="{Binding ID}">
+             Title="Group Details">
+
+    <ContentPage.Resources> 
+
+        <Style TargetType="Button"
+               ApplyToDerivedTypes="True"
+               CanCascade="True">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="BackgroundColor" Value="LightGray" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <Label Text="Group name:"/>
+        <Label Text="Group details"/>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+               
+            </Grid.ColumnDefinitions>
+            <Button Text="Join Group"
+                    Clicked="OnJoinButtonClicked"/>
+            <Button Text="Navigate" Grid.Column="1"/>
+        </Grid>
+    </StackLayout>
 </ContentPage>

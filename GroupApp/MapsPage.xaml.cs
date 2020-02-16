@@ -36,10 +36,13 @@ namespace GroupApp
         }
         async void PinClicked(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new GroupDetailsPage
-            {
-                BindingContext = new Pins()
-            });
+            Pin singlePin = sender as Pin;
+
+            var groupdetailsPage = new GroupDetailsPage();
+            groupdetailsPage.BindingContext = singlePin;
+            //await DisplayAlert($"{singlePin.MarkerId}", $"{singlePin.Address}", "Ok");
+
+            await Navigation.PushAsync(groupdetailsPage);
         }
 
         //Add new Location

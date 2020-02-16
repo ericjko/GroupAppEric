@@ -9,6 +9,7 @@
     </ContentPage.ToolbarItems>
     <StackLayout>
         <!--Displays initial map-->
+        
         <maps:Map x:Name="map"
                   ItemsSource="{Binding Locations}">
                   <maps:Map.ItemTemplate>

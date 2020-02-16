@@ -31,5 +31,6 @@ namespace GroupApp.ViewModels
             Description = description;
             Position = position;
         }
+
     }
 }

@@ -15,7 +15,6 @@ namespace GroupApp.ViewModels
 
         public PinItemsSourcePageViewModel()
         {
-            
             var pins = App.PinDatabase.GetNotesAsync();
             //List<Pins> result = pins.Result;
             Pins[] pins1 = pins.Result.ToArray();
@@ -28,7 +27,6 @@ namespace GroupApp.ViewModels
             for (int i = 0; i < pins1.Length; i++)
             {
                 _locations.Add(new Location(pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
-                
             }
             
         }

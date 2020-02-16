@@ -40,7 +40,9 @@ namespace GroupApp
 
             var groupdetailsPage = new GroupDetailsPage();
             groupdetailsPage.BindingContext = singlePin;
-            //await DisplayAlert($"{singlePin.MarkerId}", $"{singlePin.Address}", "Ok");
+
+            //MarkerId test
+            await DisplayAlert($"{singlePin.MarkerId}", $"{singlePin.Address}", "Ok");
 
             await Navigation.PushAsync(groupdetailsPage);
         }

@@ -3,4 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupApp.GroupDetailsPage"
              Title="{Binding Address}">
+    <StackLayout>
+    <Label
+        Text="{Binding MarkerId}">
+
+    </Label>
+        </StackLayout>
 </ContentPage>

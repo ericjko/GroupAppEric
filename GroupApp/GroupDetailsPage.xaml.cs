@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace GroupApp
 {
@@ -10,6 +11,15 @@ namespace GroupApp
         public GroupDetailsPage()
         {
             InitializeComponent();
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var singlePin = (Pin)BindingContext;
+
+            //MarkerId test
+            await DisplayAlert($"{singlePin.MarkerId}", $"{singlePin.Address}", "Ok");
         }
     }
 }

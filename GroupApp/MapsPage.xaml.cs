@@ -41,9 +41,6 @@ namespace GroupApp
             var groupdetailsPage = new GroupDetailsPage();
             groupdetailsPage.BindingContext = singlePin;
 
-            //MarkerId test
-            await DisplayAlert($"{singlePin.MarkerId}", $"{singlePin.Address}", "Ok");
-
             await Navigation.PushAsync(groupdetailsPage);
         }
 
@@ -59,9 +56,6 @@ namespace GroupApp
         {
             App.Current.MainPage = new NavigationPage(new Login());
         }
-
-
-
 
         //Street, Satellite, Hybrid options
         void OnSliderValueChanged(object sender, ValueChangedEventArgs e)

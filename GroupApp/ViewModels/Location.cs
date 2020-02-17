@@ -12,7 +12,7 @@ namespace GroupApp.ViewModels
 
         public string Address { get; }
         public string Description { get; }
-        public int StyleID { get; }
+        public int AutomationID { get; }
 
         public Position Position
         {
@@ -28,7 +28,7 @@ namespace GroupApp.ViewModels
         }
         public Location(int id, string address, string description, Position position)
         {
-            StyleID = id;
+            AutomationID = id;
             Address = address;
             Description = description;
             Position = position;

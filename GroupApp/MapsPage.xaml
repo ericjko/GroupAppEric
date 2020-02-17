@@ -21,7 +21,7 @@
                               Address="{Binding Address}"
                               Label="{Binding Description}"
                               InfoWindowClicked="PinClicked"
-                              AutomationId="{Binding StyleID}"/>
+                              AutomationId="{Binding AutomationID}"/>
                 </DataTemplate>    
             </maps:Map.ItemTemplate>
         </maps:Map>

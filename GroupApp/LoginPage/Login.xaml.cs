@@ -24,7 +24,6 @@ namespace GroupApp.LoginPage
             {
                 LogError.Text = "invalid details";
             }
-
             else
             {
                 // checks if anything is entered inside of the text fields
@@ -32,7 +31,6 @@ namespace GroupApp.LoginPage
                 {
                     LogError.Text = "invalid details";
                 }
-
                 else
                 {
                     // checks if password is correct and logs user into next page
@@ -47,7 +45,6 @@ namespace GroupApp.LoginPage
                         int userid = App.setUserID(user.Id);
                         App.Current.MainPage = new NavigationPage(new MapsPage());
                     }
-
                     else
                     {
                         LogError.Text = "invalid details";
@@ -55,7 +52,6 @@ namespace GroupApp.LoginPage
                 }
             }
         }
-
         // switches to register page
         private void RegBtn(object sender, EventArgs e)
         {

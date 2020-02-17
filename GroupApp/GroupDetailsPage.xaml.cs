@@ -18,8 +18,8 @@ namespace GroupApp
 
             var singlePin = (Pin)BindingContext;
 
-            //MarkerId test
-            await DisplayAlert($"{singlePin.MarkerId}", $"{singlePin.Address}", "Ok");
+            //MarkerId test, User ID test
+            await DisplayAlert($"{singlePin.MarkerId}", $"{singlePin.AutomationId}", "Ok");
         }
     }
 }

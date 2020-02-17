@@ -6,7 +6,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using GroupApp.Models;
-
+using GroupApp.LoginPage;
 
 namespace GroupApp
 {
@@ -54,6 +54,10 @@ namespace GroupApp
             {
                 BindingContext = new Pins()
             });
+        }
+        void LogOffClicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Login());
         }
 
 

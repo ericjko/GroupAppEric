@@ -12,8 +12,11 @@ namespace GroupApp
     public partial class App : Application
     {
         public static string usercheck;
+        static int userId;
+
         string Database => AccessFile.FilePath("db");
         public static UserDatabase UserDB { get; private set; }
+
         public App()
         {
             InitializeComponent();
@@ -31,6 +34,17 @@ namespace GroupApp
         {
             usercheck = name;
         }
+
+        //set user id and get user id allows to access user id anywhere in application
+        public static int getUserID()
+        {
+            return userId;
+        }
+        public static int setUserID(int id)
+        {
+            userId = id;
+            return userId;
+        }
         static PinDatabase pindatabase;
 
         public static PinDatabase PinDatabase
@@ -39,7 +53,7 @@ namespace GroupApp
             {
                 if (pindatabase == null)
                 {
-                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin12.db3"));
+                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin14.db3"));
                 }
                 return pindatabase;
             }

@@ -39,6 +39,12 @@ namespace GroupApp.LoginPage
                     if (Hash.rehashPass(PasswordField.Text, UsernameField.Text))
                     {
                         App.usercheck = UsernameField.Text;
+
+                        //get login user information
+                        var user = App.UserDB.getUser(UsernameField.Text);
+
+                        //sets userid
+                        int userid = App.setUserID(user.Id);
                         App.Current.MainPage = new NavigationPage(new MapsPage());
                     }
 

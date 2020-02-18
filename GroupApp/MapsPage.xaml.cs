@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using GroupApp.ViewModels;
 using Plugin.Geolocator;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using GroupApp.Models;
+using GroupApp.LoginPage;
 
 namespace GroupApp
 {
     public partial class MapsPage : ContentPage
     {
-        public bool IsShowingUser { get; set; }
-
+        //public bool IsShowingUser { get; set; }
+        
         public MapsPage()
         {
             InitializeComponent();
-
-            
+            BindingContext = new PinItemsSourcePageViewModel();
         }
 
         protected override async void OnAppearing()
@@ -29,44 +31,31 @@ namespace GroupApp
             var locator = CrossGeolocator.Current;
             var position = await locator.GetPositionAsync();
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
+
+            //var newPinPosition = await App.PinDatabase.GetNotesAsync();
         }
-        //protected override async void OnAppearing()
-        //{
-        //    //Current Location
-        //    base.OnAppearing();
-        //    try
-        //    {
-        //        var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-        //        var location = await Geolocation.GetLocationAsync(request);
+        async void PinClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            Pin singlePin = sender as Pin;
 
-        //        if (location != null)
-        //        {
-        //            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-        //        }
-        //        Position position = new Position(location.Latitude, location.Longitude);
-        //        MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
+            var groupdetailsPage = new GroupDetailsPage();
+            groupdetailsPage.BindingContext = singlePin;
 
+            await Navigation.PushAsync(groupdetailsPage);
+        }
 
-        //        //Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map(mapSpan);
-        //    }
-        //    catch (FeatureNotSupportedException fnsEx)
-        //    {
-        //        // Handle not supported on device exception
-        //    }
-        //    catch (FeatureNotEnabledException fneEx)
-        //    {
-        //        // Handle not enabled on device exception
-        //    }
-        //    catch (PermissionException pEx)
-        //    {
-        //        // Handle permission exception
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Unable to get location
-        //    }
-        //}
-
+        //Add new Location
+        async void OnGroupAddedClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewGroup
+            {
+                BindingContext = new Pins()
+            });
+        }
+        void LogOffClicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Login());
+        }
 
         //Street, Satellite, Hybrid options
         void OnSliderValueChanged(object sender, ValueChangedEventArgs e)

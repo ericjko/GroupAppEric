@@ -43,6 +43,10 @@ namespace GroupApp.LoginPage
 
                         //sets userid
                         int userid = App.setUserID(user.Id);
+
+                        //sets userEmail
+                        string useremail = App.setUserEmail(user.Email);
+
                         App.Current.MainPage = new NavigationPage(new MapsPage());
                     }
                     else
@@ -67,6 +71,7 @@ namespace GroupApp.LoginPage
             UsernameField2.Text = "";
             PasswordField2.Text = "";
             PasswordField3.Text = "";
+            EmailField.Text = "";
             LoginPage.IsVisible = true;
             RegPage.IsVisible = false;
         }
@@ -88,7 +93,7 @@ namespace GroupApp.LoginPage
                     if (PasswordField2.Text.Length >= 4 && PasswordField2.Text.Any(char.IsUpper) && PasswordField2.Text.Any(char.IsLower) && PasswordField2.Text.Any(char.IsDigit))
                     {
                         // calls register function and adds a new user to the database
-                        App.UserDB.Register(UsernameField2.Text, PasswordField2.Text);
+                        App.UserDB.Register(UsernameField2.Text, PasswordField2.Text, EmailField.Text);
 
                         //changes back to login page
                         LoginPage.IsVisible = true;
@@ -96,6 +101,7 @@ namespace GroupApp.LoginPage
                         UsernameField2.Text = "";
                         PasswordField2.Text = "";
                         PasswordField3.Text = "";
+                        EmailField.Text = "";
                     }
 
                     else

@@ -28,6 +28,8 @@ namespace GroupApp
             //pin created gets UserID
             pins.userID = App.getUserID();
 
+
+
             //saves Address,Details,Latitude,Longitude to database
             await App.PinDatabase.SaveNoteAsync(pins);
 

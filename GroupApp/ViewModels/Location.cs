@@ -7,11 +7,39 @@ namespace GroupApp.ViewModels
     public class Location: INotifyPropertyChanged
     {
         Position _position;
+        private string _address="";
+        private string _description="";
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Address { get; }
-        public string Description { get; }
+        //mpiva: Added this two in case you want to edit the pin.
+        public string Address        
+        {
+            get => _address;
+            set
+            {
+                if (!_address.Equals(value))
+                {
+                    _address = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Address)));
+                }
+            }
+        }
+
+        public string Description
+        {
+            get => _description;
+            set
+            {
+                if (!_description.Equals(value))
+                {
+                    _description = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Description)));
+                }
+            }
+
+        }
         public int AutomationID { get; }
 
         public Position Position

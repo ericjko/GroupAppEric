@@ -47,10 +47,7 @@ namespace GroupApp
         //Add new Location
         async void OnGroupAddedClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewGroup
-            {
-                BindingContext = new Pins()
-            });
+            await Navigation.PushAsync(new NewGroup((PinItemsSourcePageViewModel) BindingContext));
         }
         void LogOffClicked(object sender, EventArgs e)
         {

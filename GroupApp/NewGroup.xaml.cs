@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GroupApp.Models;
+using GroupApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -9,9 +10,13 @@ namespace GroupApp
 {
     public partial class NewGroup : ContentPage
     {
-        public NewGroup()
+        private PinItemsSourcePageViewModel _collection;
+
+        public NewGroup(PinItemsSourcePageViewModel collection)
         {
+            _collection = collection;
             InitializeComponent();
+            BindingContext = new Pins();
         }
         async void onSaveAddressClick(object sender, EventArgs e)
         {
@@ -27,9 +32,8 @@ namespace GroupApp
 
             //pin created gets UserID
             pins.userID = App.getUserID();
-
-            //saves Address,Details,Latitude,Longitude to database
-            await App.PinDatabase.SaveNoteAsync(pins);
+            //saves Address,Details,Latitude,Longitude to database and update the map
+            await _collection.Save(pins);
 
             await Navigation.PopAsync();
         }

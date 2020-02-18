@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -11,6 +11,10 @@ namespace GroupApp
         public GroupDetailsPage()
         {
             InitializeComponent();
+        }
+        async void OnJoinButtonClicked(object sender, EventArgs e)
+        {
+            await Launcher.OpenAsync("https://mail.google.com/mail/mu/mp/755/#co");
         }
         protected override async void OnAppearing()
         {

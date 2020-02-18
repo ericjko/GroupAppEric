@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GroupApp.CategoryPage"
+             Title="Select Category">
+              
+
+    <ContentPage.Resources> 
+
+        <Style TargetType="Button"
+               ApplyToDerivedTypes="True"
+               CanCascade="True">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="BackgroundColor" Value="LightGray" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <!--<Label Text="Group name:"/>
+        <Label Text="Group details"/>-->
+        
+        <Grid>
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+               
+            </Grid.ColumnDefinitions>-->
+
+            <Picker x:Name="picker"
+            Title="Select a Category"
+            TitleColor="Red">
+            <Picker.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+              <x:String>All</x:String>
+              <x:String>Computer science</x:String>
+              <x:String>Math</x:String>
+              <x:String>Biology</x:String>
+              <x:String>Physics</x:String>
+            </x:Array>
+            </Picker.ItemsSource>
+            </Picker>
+        </Grid>
+            <Button Text= "Next"
+                    Clicked="NextButtonClicked"/>
+    </StackLayout>
+</ContentPage>

@@ -12,7 +12,7 @@ namespace GroupApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MapsPage());
+            MainPage = new NavigationPage(new CategoryPage());
         }
         static PinDatabase pindatabase;
 

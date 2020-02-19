@@ -7,11 +7,39 @@ namespace GroupApp.ViewModels
     public class Location: INotifyPropertyChanged
     {
         Position _position;
+        private string _address = "";
+        private string _description = "";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string Address { get; }
-        public string Description { get; }
+        public string Address
+        {
+            get => _address;
+            //to edit
+            set
+            {
+                if (!_address.Equals(value))
+                {
+                    _address = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Address)));
+                }
+            }
+        }
+        public string Description
+        {
+            get => _description;
+            //to edit
+            set
+            {
+                if (!_description.Equals(value))
+                {
+                    _description = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Description)));
+                }
+            }
+
+        }
+        public int AutomationID { get; }
 
         public Position Position
         {
@@ -25,11 +53,13 @@ namespace GroupApp.ViewModels
                 }
             }
         }
-        public Location(string address, string description, Position position)
+        public Location(int id, string address, string description, Position position)
         {
+            AutomationID = id;
             Address = address;
             Description = description;
             Position = position;
         }
+
     }
 }

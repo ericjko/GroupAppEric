@@ -5,10 +5,14 @@
              xmlns:local="clr-namespace:GroupApp.ViewModels;">   
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Group"
-                     Clicked="OnGroupAddedClicked" />
+                     Clicked="OnGroupAddedClicked"
+                     />
+        <ToolbarItem Text="Log Off"
+                     Clicked="LogOffClicked" />
     </ContentPage.ToolbarItems>
     <StackLayout>
         <!--Displays initial map-->
+        
         <maps:Map x:Name="map"
                   ItemsSource="{Binding Locations}">
                   <maps:Map.ItemTemplate>
@@ -16,7 +20,8 @@
                     <maps:Pin Position="{Binding Position}"
                               Address="{Binding Address}"
                               Label="{Binding Description}"
-                              InfoWindowClicked="PinClicked"/>
+                              InfoWindowClicked="PinClicked"
+                              AutomationId="{Binding AutomationID}"/>
                 </DataTemplate>    
             </maps:Map.ItemTemplate>
         </maps:Map>

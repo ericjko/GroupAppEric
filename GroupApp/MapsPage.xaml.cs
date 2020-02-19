@@ -6,7 +6,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using GroupApp.Models;
-
+using GroupApp.LoginPage;
 
 namespace GroupApp
 {
@@ -36,23 +36,23 @@ namespace GroupApp
         }
         async void PinClicked(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new GroupDetailsPage
-            {
-                BindingContext = new Pins()
-            });
+            Pin singlePin = sender as Pin;
+
+            var groupdetailsPage = new GroupDetailsPage();
+            groupdetailsPage.BindingContext = singlePin;
+
+            await Navigation.PushAsync(groupdetailsPage);
         }
 
         //Add new Location
         async void OnGroupAddedClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewGroup
-            {
-                BindingContext = new Pins()
-            });
+            await Navigation.PushAsync(new NewGroup((PinItemsSourcePageViewModel)BindingContext));
         }
-
-
-
+        void LogOffClicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new Login());
+        }
 
         //Street, Satellite, Hybrid options
         void OnSliderValueChanged(object sender, ValueChangedEventArgs e)

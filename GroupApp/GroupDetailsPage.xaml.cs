@@ -18,6 +18,7 @@ namespace GroupApp
         void OnJoinButtonClicked(object sender, EventArgs e)
         {
             var singlePin = (Pin)BindingContext;
+            //nuget package predefined method to send email
             var emailMessenger = CrossMessaging.Current.EmailMessenger;
             User user = App.UserDB.getUserById(Int16.Parse(singlePin.AutomationId));
             string email = user.Email;

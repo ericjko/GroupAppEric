@@ -13,6 +13,7 @@ namespace GroupApp
     {
         public static string usercheck;
         static int userId;
+        static string userEmail;
 
         string Database => AccessFile.FilePath("db");
         public static UserDatabase UserDB { get; private set; }
@@ -21,7 +22,7 @@ namespace GroupApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MapsPage());
+            MainPage = new NavigationPage(new Login());
             //MainPage = new NavigationPage(new Login());
 
             UserDB = new UserDatabase(Database);
@@ -45,6 +46,18 @@ namespace GroupApp
             userId = id;
             return userId;
         }
+
+        public static string getUserEmail()
+        {
+            return userEmail;
+        }
+
+        public static string setUserEmail(string email)
+        {
+            userEmail = email;
+            return email;
+        }
+
         static PinDatabase pindatabase;
 
         public static PinDatabase PinDatabase

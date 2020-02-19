@@ -17,11 +17,11 @@ namespace GroupApp.DB
 
         //function to register a new user to the account takes in the name and password the user enters then hashes the password
         //before creating a new user object with that name and password which is stored into the database.
-        public void Register(string name, string pass)
+        public void Register(string name, string pass, string email)
         {
             pass = Hash.hashPass(pass);
-            var A = new User { Name = name, Password = pass };
-            conn.Insert(new User { Name = A.Name, Password = A.Password });
+            var A = new User { Name = name, Password = pass, Email = email };
+            conn.Insert(new User { Name = A.Name, Password = A.Password, Email = A.Email });
         }
 
         // takes in a name and searches for a user in the database with that name if it finds them, it returns that user
@@ -43,6 +43,14 @@ namespace GroupApp.DB
                 .FirstOrDefault();
 
             return user.Id;
+        }
+
+        public User getUserById(int id)
+        {
+            var user = from i in conn.Table<User>()
+                       where i.Id == id
+                       select i;
+            return user.FirstOrDefault();
         }
 
     }

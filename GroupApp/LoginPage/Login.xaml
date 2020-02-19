@@ -37,7 +37,6 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -51,13 +50,11 @@
 
                 <Label Text="Username:" VerticalOptions="Center" Grid.Column="0" Grid.Row="1"/>
                 <Entry x:Name="UsernameField2"  Grid.Column="1" Grid.Row="1" VerticalOptions="FillAndExpand"/>
-                <Label Text="Email" VerticalOptions="Center" Grid.Column="0" Grid.Row="2"/>
-                <Entry x:Name="EmailField"  Grid.Column="1" Grid.Row="2" VerticalOptions="FillAndExpand"/>
-                <Label Text="Password:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="3"/>
-                <Entry x:Name="PasswordField2" IsPassword="True"  Grid.Column="1" Grid.Row="3" VerticalOptions="FillAndExpand"/>
+                <Label Text="Password:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="2"/>
+                <Entry x:Name="PasswordField2" IsPassword="True"  Grid.Column="1" Grid.Row="2" VerticalOptions="FillAndExpand"/>
 
-                <Label Text="Retype Pass" VerticalOptions="Center"  Grid.Column="0" Grid.Row="4"/>
-                <Entry x:Name="PasswordField3" IsPassword="True"  Grid.Column="1" Grid.Row="4" VerticalOptions="FillAndExpand"/>
+                <Label Text="Retype Pass" VerticalOptions="Center"  Grid.Column="0" Grid.Row="3"/>
+                <Entry x:Name="PasswordField3" IsPassword="True"  Grid.Column="1" Grid.Row="3" VerticalOptions="FillAndExpand"/>
 
                 <Button x:Name="HaveAcc" Text="Have Acc"  Grid.Row="6" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="HveBtn"/>
                 <Button x:Name="Register" Text="Register"  Grid.Row="6" Grid.Column="2" VerticalOptions="FillAndExpand" Clicked="Regacc"/>

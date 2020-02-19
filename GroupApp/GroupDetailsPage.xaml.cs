@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Essentials;
-using GroupApp.Data;
-using GroupApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using Plugin.Messaging;
 
 namespace GroupApp
 {
@@ -15,16 +12,9 @@ namespace GroupApp
         {
             InitializeComponent();
         }
-        void OnJoinButtonClicked(object sender, EventArgs e)
+        async void OnJoinButtonClicked(object sender, EventArgs e)
         {
-            var singlePin = (Pin)BindingContext;
-            var emailMessenger = CrossMessaging.Current.EmailMessenger;
-            User user = App.UserDB.getUserById(Int16.Parse(singlePin.AutomationId));
-            string email = user.Email;
-            if (emailMessenger.CanSendEmail)
-            {
-                emailMessenger.SendEmail(email);
-            }
+            await Launcher.OpenAsync("https://mail.google.com/mail/mu/mp/755/#co");
         }
         protected override async void OnAppearing()
         {

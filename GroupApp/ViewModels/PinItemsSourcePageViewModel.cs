@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using Xamarin.Forms.Maps;
 using Xamarin.Essentials;
 using GroupApp.Models;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace GroupApp.ViewModels
 {
@@ -28,7 +30,34 @@ namespace GroupApp.ViewModels
             {
                 _locations.Add(new Location(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
             }
-            
+
+        }
+        public async Task Save(Pins pin)
+        {
+            await App.PinDatabase.SaveNoteAsync(pin); //adds to database, database will also update/add after checking if already exists.
+
+            //First check if this is an edit or an add.
+            Location loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
+
+            if (loc == null)
+            {
+                loc = new Location(pin.ID, pin.Address, pin.Description, new Position(pin.Latitude, pin.Longitude));
+                _locations.Add(loc);
+            }
+            else
+            {
+                loc.Address = pin.Address;
+                loc.Description = pin.Description;
+                loc.Position = new Position(pin.Latitude, pin.Longitude);
+            }
+        }
+        //to remove
+        public async Task Remove(Pins pin)
+        {
+            await App.PinDatabase.DeleteNoteAsync(pin);
+            Location loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
+            if (loc != null)
+                _locations.Remove(loc);
         }
     }
 }

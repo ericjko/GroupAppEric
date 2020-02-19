@@ -21,8 +21,8 @@ namespace GroupApp
         {
             InitializeComponent();
 
-            //MainPage = new NavigationPage(new MapsPage());
-            MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new MapsPage());
+            //MainPage = new NavigationPage(new Login());
 
             UserDB = new UserDatabase(Database);
         }
@@ -53,7 +53,7 @@ namespace GroupApp
             {
                 if (pindatabase == null)
                 {
-                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin14.db3"));
+                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin15.db3"));
                 }
                 return pindatabase;
             }

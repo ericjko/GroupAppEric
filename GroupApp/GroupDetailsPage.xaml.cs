@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Xamarin.Essentials;
-using GroupApp.Data;
 using GroupApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;

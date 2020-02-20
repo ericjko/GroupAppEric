@@ -13,6 +13,7 @@ namespace GroupApp
     {
         public static string usercheck;
         static int userId;
+        static int catId;
         static string userEmail;
 
         string Database => AccessFile.FilePath("db");
@@ -46,6 +47,16 @@ namespace GroupApp
             userId = id;
             return userId;
         }
+        //set category id and get category id allows to access anywhere in application
+        public static int getCategoryID()
+        {
+            return catId;
+        }
+        public static int setCategoryID(int id)
+        {
+            catId = id;
+            return catId;
+        }
 
         public static string getUserEmail()
         {
@@ -57,6 +68,7 @@ namespace GroupApp
             userEmail = email;
             return email;
         }
+
 
         static PinDatabase pindatabase;
 

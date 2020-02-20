@@ -42,7 +42,7 @@ namespace GroupApp.ViewModels
             await App.PinDatabase.SaveNoteAsync(pin); //adds to database, database will also update/add after checking if already exists.
 
             //First check if this is an edit or an add.
-            Location loc = _locations.FirstOrDefault(a => a.AutomationID == pin.userID);
+            Location loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
 
             if (loc == null)
             {

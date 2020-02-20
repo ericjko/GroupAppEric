@@ -35,6 +35,9 @@ namespace GroupApp
             //pin created gets UserID
             pins.userID = App.getUserID();
 
+            //pin created gets CategoryID; to filter pins by each category
+            pins.categoryID = App.getCategoryID();
+
             //save Address,Details,Latitude,Longitude to database and observable list
             await _collection.Save(pins);
 

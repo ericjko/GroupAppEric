@@ -16,9 +16,10 @@ namespace GroupApp.Data
             _database.CreateTableAsync<Pins>().Wait();
         }
 
-        public Task<List<Pins>> GetNotesAsync()
+        public Task<List<Pins>> GetNotesAsync(int id)
         {
-            return _database.Table<Pins>().ToListAsync();
+            return _database.Table<Pins>().Where(i => i.categoryID == id)
+                            .ToListAsync();
         }
 
         public Task<Pins> GetNoteAsync(int id)

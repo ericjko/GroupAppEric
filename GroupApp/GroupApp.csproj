@@ -32,4 +32,7 @@
     <Folder Include="Models\" />
     <Folder Include="LoginPage\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
 </Project>

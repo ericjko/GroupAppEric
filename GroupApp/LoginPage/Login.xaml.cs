@@ -43,7 +43,7 @@ namespace GroupApp.LoginPage
 
                         //sets userid
                         int userid = App.setUserID(user.Id);
-                        App.Current.MainPage = new NavigationPage(new MapsPage());
+                        App.Current.MainPage = new NavigationPage(new CategoryPage());
                     }
                     else
                     {

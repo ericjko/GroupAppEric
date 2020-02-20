@@ -32,7 +32,6 @@ namespace GroupApp
             var position = await locator.GetPositionAsync();
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
 
-            //var newPinPosition = await App.PinDatabase.GetNotesAsync();
         }
         async void PinClicked(object sender, SelectedItemChangedEventArgs e)
         {

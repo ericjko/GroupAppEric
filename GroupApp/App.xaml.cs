@@ -13,6 +13,7 @@ namespace GroupApp
     {
         public static string usercheck;
         static int userId;
+        static int catId;
 
         string Database => AccessFile.FilePath("db");
         public static UserDatabase UserDB { get; private set; }
@@ -21,8 +22,9 @@ namespace GroupApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MapsPage());
-            //MainPage = new NavigationPage(new Login());
+            //MainPage = new NavigationPage(new CategoryPage());
+            //MainPage = new NavigationPage(new MapsPage());
+            MainPage = new NavigationPage(new Login());
 
             UserDB = new UserDatabase(Database);
         }
@@ -45,6 +47,16 @@ namespace GroupApp
             userId = id;
             return userId;
         }
+        //set category id and get category id allows access anywhere in application
+        public static int getCategoryID()
+        {
+            return catId;
+        }
+        public static int setCategoryID(int id)
+        {
+            catId = id;
+            return catId;
+        }
         static PinDatabase pindatabase;
 
         public static PinDatabase PinDatabase
@@ -53,7 +65,7 @@ namespace GroupApp
             {
                 if (pindatabase == null)
                 {
-                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin15.db3"));
+                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin18.db3"));
                 }
                 return pindatabase;
             }

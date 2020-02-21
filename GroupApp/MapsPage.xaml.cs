@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using GroupApp.Models;
 using GroupApp.LoginPage;
+using System.Threading.Tasks;
 
 namespace GroupApp
 {
@@ -28,10 +29,10 @@ namespace GroupApp
             map.IsShowingUser = true;
 
             //moves map to location, zooms in on current location
-            var locator = CrossGeolocator.Current;
-            var position = await locator.GetPositionAsync();
-
-
+            //var locator = CrossGeolocator.Current;
+            //var position = await locator.GetPositionAsync();
+          
+            
 
             //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
             Position southwestBound = new Position(17.418652, 78.327941);
@@ -40,8 +41,6 @@ namespace GroupApp
 
             Position covPosition = new Position(52.407243, -1.503682);
             map.MoveToRegion(MapSpan.FromCenterAndRadius(covPosition, Distance.FromMiles(0.7)));
-
-            
             
 
         }
@@ -49,11 +48,12 @@ namespace GroupApp
         {
             Pin singlePin = sender as Pin;
 
-            var groupdetailsPage = new GroupDetailsPage();
+            var groupdetailsPage = new GroupDetailsPage(new MapsPage());
             groupdetailsPage.BindingContext = singlePin;
 
             await Navigation.PushAsync(groupdetailsPage);
         }
+
 
         //Add new Location
         async void OnGroupAddedClicked(object sender, EventArgs e)
@@ -92,5 +92,19 @@ namespace GroupApp
                     break;
             }
         }
+        //public async Task Navigate(Pin pin)
+        //{
+        //    //await App.PinDatabase.DeleteNoteAsync(pin);
+        //    //LocationViewModel loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
+        //    //if (loc != null)
+        //    //    _locations.Remove(loc);
+        //    //var locator = CrossGeolocator.Current;
+        //    //var position = await locator.GetPositionAsync();
+        //    //Xamarin.Essentials.Map.OpenAsync(position.Latitude, position.Longitude, new MapLaunchOptions
+        //    //{
+        //    //    Name = pin.Address,
+        //    //    NavigationMode = NavigationMode.Walking
+        //    //});
+        //}
     }
 }

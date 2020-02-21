@@ -25,7 +25,7 @@ namespace GroupApp
 
             MainPage = new NavigationPage(new CategoryPage());
             //MainPage = new NavigationPage(new Login());
-            //MainPage = new NavigationPage(new Login());
+
 
             UserDB = new UserDatabase(Database);
         }

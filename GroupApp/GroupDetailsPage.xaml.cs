@@ -3,14 +3,19 @@ using GroupApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Plugin.Messaging;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Plugin.Geolocator;
 
 namespace GroupApp
 {
     public partial class GroupDetailsPage : ContentPage
     {
-        public GroupDetailsPage()
+        private MapsPage _maps;
+        public GroupDetailsPage(MapsPage maps)
         {
             InitializeComponent();
+            
         }
         void OnJoinButtonClicked(object sender, EventArgs e)
         {
@@ -32,6 +37,19 @@ namespace GroupApp
 
             //MarkerId test, User ID test
             await DisplayAlert($"{singlePin.MarkerId}", "User ID " + $"{singlePin.AutomationId}", "Ok");
+        }
+
+        public async void NavigateButtonClicked(object sender, EventArgs e)
+        {
+            var singlePin = (Pin)BindingContext;
+            
+            var locator = CrossGeolocator.Current;
+            var position = await locator.GetPositionAsync();
+            Xamarin.Essentials.Map.OpenAsync(position.Latitude, position.Longitude, new MapLaunchOptions
+            {
+                Name = singlePin.Address,
+                NavigationMode = NavigationMode.Walking
+            });
         }
     }
 }

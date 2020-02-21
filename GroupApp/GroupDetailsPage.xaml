@@ -29,7 +29,9 @@
             </Grid.ColumnDefinitions>
             <Button Text="Join Group"
                     Clicked="OnJoinButtonClicked"/>
-            <Button Text="Navigate" Grid.Column="1"/>
+            <Button Text="Navigate"
+                    Grid.Column="1"
+                    Clicked="NavigateButtonClicked"/>
         </Grid>
     </StackLayout>
 </ContentPage>

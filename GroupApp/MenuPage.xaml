@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GroupApp"
+             x:Class="GroupApp.MenuPage"
+             Padding="0,40,0,0"
+			 IconImageSource="hamburger.png"
+			 Title="Menu">
+        <StackLayout>
+        <ListView x:Name="listView" x:FieldModifier="public">
+           <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MenuPageItem}">
+                    <local:MenuPageItem Title="Select Category" IconSource="" TargetType="{x:Type local:CategoryPage}"/>
+                    <local:MenuPageItem Title="Map" IconSource="" TargetType="{x:Type local:MapsPage}" />
+                    <local:MenuPageItem Title="Logoff" IconSource="" TargetType="{x:Type local:LoginPage.Login}" />
+                    <!--<local:MenuPageItem Title="Reminders" IconSource="reminders.png" TargetType="{x:Type local:ReminderPage}" />-->
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding IconSource}" />
+                            <Label Grid.Column="1" Text="{Binding Title}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

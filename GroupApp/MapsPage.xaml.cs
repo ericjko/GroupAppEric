@@ -48,6 +48,7 @@ namespace GroupApp
         {
             await Navigation.PushAsync(new NewGroup((PinItemsSourcePageViewModel)BindingContext));
         }
+
         void LogOffClicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new NavigationPage(new Login());

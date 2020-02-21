@@ -27,7 +27,7 @@ namespace GroupApp
             int catid = App.setCategoryID(catID);
 
 
-            await Navigation.PushAsync(new MapsPage());
+            await Navigation.PushAsync(new MainPage());
         }
         
 

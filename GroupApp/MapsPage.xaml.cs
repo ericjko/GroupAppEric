@@ -30,7 +30,19 @@ namespace GroupApp
             //moves map to location, zooms in on current location
             var locator = CrossGeolocator.Current;
             var position = await locator.GetPositionAsync();
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
+
+
+
+            //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
+            Position southwestBound = new Position(17.418652, 78.327941);
+            Position northeastBound = new Position(17.439288, 78.354593);
+            //Coventry University position
+
+            Position covPosition = new Position(52.407243, -1.503682);
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(covPosition, Distance.FromMiles(0.7)));
+
+            
+            
 
         }
         async void PinClicked(object sender, SelectedItemChangedEventArgs e)

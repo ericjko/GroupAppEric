@@ -16,15 +16,15 @@ namespace GroupApp
         static int catId;
         static string userEmail;
 
-        string Database => AccessFile.FilePath("db1");
+        string Database => AccessFile.FilePath("db2");
         public static UserDatabase UserDB { get; private set; }
 
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new CategoryPage());
-            //MainPage = new NavigationPage(new Login());
+            //MainPage = new NavigationPage(new CategoryPage());
+            MainPage = new NavigationPage(new Login());
 
 
             UserDB = new UserDatabase(Database);
@@ -79,7 +79,7 @@ namespace GroupApp
             {
                 if (pindatabase == null)
                 {
-                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin20.db3"));
+                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin21.db3"));
                 }
                 return pindatabase;
             }

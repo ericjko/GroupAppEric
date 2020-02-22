@@ -12,7 +12,7 @@ namespace GroupApp.ViewModels
 
     public class PinItemsSourcePageViewModel
     {
-        readonly ObservableCollection<LocationViewModel> _locations;
+        readonly ObservableCollection<Locations> _locations;
 
         public IEnumerable Locations => _locations;
 
@@ -34,7 +34,7 @@ namespace GroupApp.ViewModels
             var pins = App.PinDatabase.GetNotesAsync(id);
             //List<Pins> result = pins.Result;
             Pins[] pins1 = pins.Result.ToArray();
-            _locations = new ObservableCollection<LocationViewModel>()
+            _locations = new ObservableCollection<Locations>()
             {
                 //new Location(0,"New York, USA", "The City That Never Sleeps", new Position(40.67, -73.94)),
                 //new Location(0,"Los Angeles, USA", "City of Angels", new Position(34.11, -118.41)),
@@ -50,7 +50,7 @@ namespace GroupApp.ViewModels
                 // Adds pins only within a 10 mile radius of coventry university
                 if (Location.CalculateDistance(covPosition, new Location(pins1[i].Latitude,pins1[i].Longitude), DistanceUnits.Miles) < 10)
                 {
-                    _locations.Add(new LocationViewModel(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
+                    _locations.Add(new Locations(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
                 }
                 //else
                 //{
@@ -66,11 +66,11 @@ namespace GroupApp.ViewModels
             await App.PinDatabase.SaveNoteAsync(pin); //adds to database, database will also update/add after checking if already exists.
 
             //First check if this is an edit or an add.
-            LocationViewModel loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
+            Locations loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
 
             if (loc == null)
             {
-                loc = new LocationViewModel(pin.userID, pin.Address, pin.Description, new Position(pin.Latitude, pin.Longitude));
+                loc = new Locations(pin.userID, pin.Address, pin.Description, new Position(pin.Latitude, pin.Longitude));
                 _locations.Add(loc);
             }
             else
@@ -84,7 +84,7 @@ namespace GroupApp.ViewModels
         public async Task Remove(Pins pin)
         {
             await App.PinDatabase.DeleteNoteAsync(pin);
-            LocationViewModel loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
+            Locations loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
             if (loc != null)
                 _locations.Remove(loc);
         }

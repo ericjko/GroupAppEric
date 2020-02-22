@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GroupApp
 {
-    public partial class MapsPage : ContentPage
+    public partial class MapsPage : TabbedPage
     {
         //public bool IsShowingUser { get; set; }
         
@@ -41,10 +41,23 @@ namespace GroupApp
 
             Position covPosition = new Position(52.407243, -1.503682);
             map.MoveToRegion(MapSpan.FromCenterAndRadius(covPosition, Distance.FromMiles(0.7)));
-            
+
+            //For pin list
+            //int catid = App.getCategoryID();
+            //listView.ItemsSource = await App.PinDatabase.GetNotesAsync(catid);
+
 
         }
         async void PinClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            Pin singlePin = sender as Pin;
+
+            var groupdetailsPage = new GroupDetailsPage(new MapsPage());
+            groupdetailsPage.BindingContext = singlePin;
+
+            await Navigation.PushAsync(groupdetailsPage);
+        }
+        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Pin singlePin = sender as Pin;
 
@@ -92,6 +105,7 @@ namespace GroupApp
                     break;
             }
         }
+        
         //public async Task Navigate(Pin pin)
         //{
         //    //await App.PinDatabase.DeleteNoteAsync(pin);

@@ -6,6 +6,7 @@ using Plugin.Messaging;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Plugin.Geolocator;
+using GroupApp.ViewModels;
 
 namespace GroupApp
 {
@@ -34,9 +35,10 @@ namespace GroupApp
             base.OnAppearing();
 
             var singlePin = (Pin)BindingContext;
+            
 
             //MarkerId test, User ID test
-            await DisplayAlert($"{singlePin.MarkerId}", "User ID " + $"{singlePin.AutomationId}", "Ok");
+            //await DisplayAlert($"{singlePin.MarkerId}", "User ID " + $"{singlePin.AutomationId}", "Ok");
         }
 
         public async void NavigateButtonClicked(object sender, EventArgs e)

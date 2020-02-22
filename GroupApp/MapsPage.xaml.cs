@@ -63,7 +63,8 @@ namespace GroupApp
         }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Locations loc = sender as Locations;
+            Locations loc = e.SelectedItem as Locations;
+
             if (loc != null)
             {
                 Pin singlePin = map.Pins.FirstOrDefault(a => a.AutomationId == loc.AutomationID.ToString());

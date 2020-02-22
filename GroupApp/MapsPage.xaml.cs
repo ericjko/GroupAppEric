@@ -21,6 +21,9 @@ namespace GroupApp
             BindingContext = new PinItemsSourcePageViewModel();
         }
 
+        public Categories FilterCategory { get; set; } = null;
+
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();

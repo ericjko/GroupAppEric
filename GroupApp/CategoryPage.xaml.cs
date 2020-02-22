@@ -16,18 +16,16 @@ namespace GroupApp
 
         async void NextButtonClicked(object sender, EventArgs e)
         {
-            //cat holds category properties
-            var cat = picker.ItemsSource[picker.SelectedIndex];
-
-            //gets category ID property, stores into catID
-            System.Reflection.PropertyInfo pi = cat.GetType().GetProperty("ID");
-            int catID = (int)(pi.GetValue(cat, null));
-
-            //sets category id
-            int catid = App.setCategoryID(catID);
-
-
-            await Navigation.PushAsync(new MapsPage());
+            if (picker.SelectedItem != null)
+            {
+                Categories cat = picker.SelectedItem as Categories;
+                if (cat != null)
+                {
+                    MapsPage page = new MapsPage();
+                    page.FilterCategory = cat;
+                    await Navigation.PushAsync(page);
+                }
+            }
         }
         
 

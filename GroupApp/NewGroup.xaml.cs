@@ -12,6 +12,9 @@ namespace GroupApp
     {
         private PinItemsSourcePageViewModel _collection;
 
+        public Categories Category { get; set; } = null;
+
+
         public NewGroup(PinItemsSourcePageViewModel collection)
         {
             _collection = collection;
@@ -36,7 +39,7 @@ namespace GroupApp
             pins.userID = App.getUserID();
 
             //pin created gets CategoryID; to filter pins by each category
-            pins.categoryID = App.getCategoryID();
+            pins.categoryID = Category?.ID ?? App.getCategoryID();
 
             //save Address,Details,Latitude,Longitude to database and observable list
             await _collection.Save(pins);

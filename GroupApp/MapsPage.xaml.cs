@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GroupApp.ViewModels;
 using Plugin.Geolocator;
 using Xamarin.Essentials;
@@ -62,19 +63,26 @@ namespace GroupApp
         }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Pin singlePin = sender as Pin;
+            Locations loc = sender as Locations;
+            if (loc != null)
+            {
+                Pin singlePin = map.Pins.FirstOrDefault(a => a.AutomationId == loc.AutomationID.ToString());
+                if (singlePin != null)
+                {
+                    var groupdetailsPage = new GroupDetailsPage(new MapsPage());
+                    groupdetailsPage.BindingContext = singlePin;
 
-            var groupdetailsPage = new GroupDetailsPage(new MapsPage());
-            groupdetailsPage.BindingContext = singlePin;
-
-            await Navigation.PushAsync(groupdetailsPage);
+                    await Navigation.PushAsync(groupdetailsPage);
+                }
+            }
         }
+
 
 
         //Add new Location
         async void OnGroupAddedClicked(object sender, EventArgs e)
         {
-            NewGroup grp=new NewGroup((PinItemsSourcePageViewModel)BindingContext));
+            NewGroup grp=new NewGroup((PinItemsSourcePageViewModel)BindingContext);
             grp.Category = FilterCategory;
             await Navigation.PushAsync(grp);
         }

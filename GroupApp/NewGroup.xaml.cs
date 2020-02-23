@@ -12,9 +12,6 @@ namespace GroupApp
     {
         private PinItemsSourcePageViewModel _collection;
 
-        public Categories Category { get; set; } = null;
-
-
         public NewGroup(PinItemsSourcePageViewModel collection)
         {
             _collection = collection;
@@ -26,7 +23,10 @@ namespace GroupApp
         async void onSaveAddressClick(object sender, EventArgs e)
         {
             var pins = (Pins)BindingContext;
-            Geocoder geoCoder = new Geocoder();
+
+            if (pins.Address != null && pins.Description != null)
+            {
+                Geocoder geoCoder = new Geocoder();
 
             IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync(pins.Address);
             Position position = approximateLocations.FirstOrDefault();
@@ -39,10 +39,17 @@ namespace GroupApp
             pins.userID = App.getUserID();
 
             //pin created gets CategoryID; to filter pins by each category
-            pins.categoryID = Category?.ID ?? App.getCategoryID();
+            pins.categoryID = App.getCategoryID();
 
             //save Address,Details,Latitude,Longitude to database and observable list
+            
             await _collection.Save(pins);
+
+            }
+            else
+            {
+                await DisplayAlert("Error", "Missing Address or Description", "Ok");
+            }
 
             await Navigation.PopAsync();
         }

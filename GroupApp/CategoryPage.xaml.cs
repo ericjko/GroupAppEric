@@ -16,18 +16,20 @@ namespace GroupApp
 
         async void NextButtonClicked(object sender, EventArgs e)
         {
-            if (picker.SelectedItem != null)
+            //cat holds category properties
+            Categories cat = picker.SelectedItem as Categories;
+            if (cat != null)
+            { 
+            //sets category id
+            int catid = App.setCategoryID(cat.ID);
+            await Navigation.PushAsync(new MapsPage());
+            }
+            else
             {
-                Categories cat = picker.SelectedItem as Categories;
-                if (cat != null)
-                {
-                    MapsPage page = new MapsPage();
-                    page.FilterCategory = cat;
-                    await Navigation.PushAsync(page);
-                }
+                await DisplayAlert("Error","Please choose a major", "Ok");
             }
         }
-        
+
 
     }
 }

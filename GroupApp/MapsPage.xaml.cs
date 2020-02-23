@@ -22,7 +22,7 @@ namespace GroupApp
             BindingContext = new PinItemsSourcePageViewModel();
         }
 
-        public Categories FilterCategory { get; set; } = null;
+        
 
 
         protected override async void OnAppearing()
@@ -63,7 +63,7 @@ namespace GroupApp
         }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Locations loc = sender as Locations;
+            Locations loc = e.SelectedItem as Locations;
             if (loc != null)
             {
                 Pin singlePin = map.Pins.FirstOrDefault(a => a.AutomationId == loc.AutomationID.ToString());
@@ -82,9 +82,9 @@ namespace GroupApp
         //Add new Location
         async void OnGroupAddedClicked(object sender, EventArgs e)
         {
-            NewGroup grp=new NewGroup((PinItemsSourcePageViewModel)BindingContext);
-            grp.Category = FilterCategory;
-            await Navigation.PushAsync(grp);
+
+            await Navigation.PushAsync(new NewGroup((PinItemsSourcePageViewModel)BindingContext));
+
         }
         void LogOffClicked(object sender, EventArgs e)
         {

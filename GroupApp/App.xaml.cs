@@ -23,8 +23,8 @@ namespace GroupApp
         {
             InitializeComponent();
 
-            //MainPage = new NavigationPage(new MainPage());
-            MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new Login());
             //MainPage = new NavigationPage(new CategoryPage());
 
             UserDB = new UserDatabase(Database);

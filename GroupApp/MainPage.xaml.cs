@@ -28,7 +28,25 @@ namespace GroupApp
             var item = e.SelectedItem as MenuPageItem;
             if (item != null)
             {
-                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                NavigationPage p=Detail as NavigationPage;
+                if (p!=null && item.TargetType == p.RootPage.GetType())
+                {
+                    //mpiva: we already have a map in detail, we can reuse it.
+                    MapsPage maps=p.RootPage as MapsPage;
+                    if (maps!=null && item.AdditionalPush == Push.NewGroup)
+                        Device.InvokeOnMainThreadAsync(async () => await maps.PushNewGroup());
+                }
+                else
+                {
+                    Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                    MapsPage maps2=Detail as MapsPage;
+                    if (maps2!=null && item.AdditionalPush == Push.NewGroup)
+                    {
+                        //mpiva: case maps is new
+                        maps2.ShouldPushNewGroup = true;
+                    }
+                }
+
                 menuPage.listView.SelectedItem = null;
                 IsPresented = false;
             }

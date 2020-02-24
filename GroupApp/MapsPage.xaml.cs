@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GroupApp.ViewModels;
 using Plugin.Geolocator;
 using Xamarin.Essentials;
@@ -14,6 +15,8 @@ namespace GroupApp
     {
         //public bool IsShowingUser { get; set; }
         
+        public bool ShouldPushNewGroup { get; set; }
+
         public MapsPage()
         {
             InitializeComponent();
@@ -31,6 +34,8 @@ namespace GroupApp
             var locator = CrossGeolocator.Current;
             var position = await locator.GetPositionAsync();
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(position.Latitude, position.Longitude), Distance.FromMiles(1)));
+            if (ShouldPushNewGroup)
+                await Navigation.PushAsync(new NewGroup());
 
         }
         async void PinClicked(object sender, SelectedItemChangedEventArgs e)
@@ -49,6 +54,10 @@ namespace GroupApp
             await Navigation.PushAsync(new NewGroup());
         }
 
+        public Task PushNewGroup()
+        {
+            return Navigation.PushAsync(new NewGroup());
+        }
         void LogOffClicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new NavigationPage(new Login());

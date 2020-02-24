@@ -12,5 +12,12 @@ namespace GroupApp
 
         public Type TargetType { get; set; }
 
+        public Push AdditionalPush { get; set; }
+    }
+
+    public enum Push
+    {
+        Nothing,
+        NewGroup
     }
 }

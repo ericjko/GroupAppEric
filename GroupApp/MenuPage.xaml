@@ -10,10 +10,10 @@
         <ListView x:Name="listView" x:FieldModifier="public">
            <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MenuPageItem}">
-                    <local:MenuPageItem Title="Add Group" IconSource="" TargetType="{x:Type local:NewGroup}"/>
-                    <local:MenuPageItem Title="Select Category" IconSource="" TargetType="{x:Type local:CategoryPage}"/>
-                    <local:MenuPageItem Title="Map" IconSource="" TargetType="{x:Type local:MapsPage}" />
-                    <local:MenuPageItem Title="Logoff" IconSource="" TargetType="{x:Type local:LoginPage.Login}" />
+                    <local:MenuPageItem Title="Add Group" IconSource="" TargetType="{x:Type local:MapsPage}" AdditionalPush="NewGroup"/>
+                    <local:MenuPageItem Title="Select Category" IconSource="" TargetType="{x:Type local:CategoryPage}" AdditionalPush="Nothing"/>
+                    <local:MenuPageItem Title="Map" IconSource="" TargetType="{x:Type local:MapsPage}" AdditionalPush="Nothing"/>
+                    <local:MenuPageItem Title="Logoff" IconSource="" TargetType="{x:Type local:LoginPage.Login}" AdditionalPush="Nothing"/>
                     <!--<local:MenuPageItem Title="Reminders" IconSource="reminders.png" TargetType="{x:Type local:ReminderPage}" />-->
                 </x:Array>
             </ListView.ItemsSource>

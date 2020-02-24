@@ -10,6 +10,7 @@
         <ListView x:Name="listView" x:FieldModifier="public">
            <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MenuPageItem}">
+                    <local:MenuPageItem Title="Add Group" IconSource="" TargetType="{x:Type local:NewGroup}"/>
                     <local:MenuPageItem Title="Select Category" IconSource="" TargetType="{x:Type local:CategoryPage}"/>
                     <local:MenuPageItem Title="Map" IconSource="" TargetType="{x:Type local:MapsPage}" />
                     <local:MenuPageItem Title="Logoff" IconSource="" TargetType="{x:Type local:LoginPage.Login}" />

@@ -25,7 +25,7 @@
                 <Label Text="Password:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="2"/>
                 <Entry x:Name="PasswordField" IsPassword="True"  Grid.Column="1" Grid.Row="2" VerticalOptions="FillAndExpand"/>
 
-                <Button x:Name="Log" Text="Login"  Grid.Row="5" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="LogBtn"/>
+                <Button x:Name="Log" Text="Login"  FontSize="Title" Grid.Row="5" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="LogBtn"/>
                 <Button x:Name="Reg" Text="Register"  Grid.Row="5" Grid.Column="2" VerticalOptions="FillAndExpand" Clicked="RegBtn"/>
 
                 <Label x:Name="LogError" Grid.Row="6" Grid.ColumnSpan="3" HorizontalOptions="Center" TextColor="Red"/>

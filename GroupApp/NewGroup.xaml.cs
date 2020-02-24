@@ -10,11 +10,9 @@ namespace GroupApp
 {
     public partial class NewGroup : ContentPage
     {
-        private PinItemsSourcePageViewModel _collection;
 
-        public NewGroup(PinItemsSourcePageViewModel collection)
+        public NewGroup()
         {
-            _collection = collection;
             InitializeComponent();
             
             BindingContext = new Pins();
@@ -39,7 +37,7 @@ namespace GroupApp
             pins.categoryID = App.getCategoryID();
 
             //save Address,Details,Latitude,Longitude to database and observable list
-            await _collection.Save(pins);
+            await Runtime.Locations.Save(pins);
 
             await Navigation.PopAsync();
         }

@@ -17,7 +17,7 @@ namespace GroupApp
         public MapsPage()
         {
             InitializeComponent();
-            BindingContext = new PinItemsSourcePageViewModel();
+            BindingContext = Runtime.Locations;
         }
 
         protected override async void OnAppearing()
@@ -46,7 +46,7 @@ namespace GroupApp
         //Add new Location
         async void OnGroupAddedClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewGroup((PinItemsSourcePageViewModel)BindingContext));
+            await Navigation.PushAsync(new NewGroup());
         }
 
         void LogOffClicked(object sender, EventArgs e)

@@ -38,7 +38,7 @@
                 <Label Text="Login Page" FontSize="Title" FontAttributes="Bold" TextColor="#1976D2" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center" />
 
                 <Label Text="Username:" VerticalOptions="Center" Grid.Column="0" Grid.Row="1" />
-                <Entry x:Name="UsernameField"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
+                <Entry x:Name="UsernameField"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Placeholder="Your Username" VerticalOptions="FillAndExpand"/>
                 <Label Text="Password:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="2"/>
                 <Entry x:Name="PasswordField" IsPassword="True"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
 

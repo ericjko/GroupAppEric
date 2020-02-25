@@ -16,16 +16,16 @@ namespace GroupApp
         static int catId;
         static string userEmail;
 
-        string Database => AccessFile.FilePath("db3");
+        string Database => AccessFile.FilePath("db");
         public static UserDatabase UserDB { get; private set; }
 
         public App()
         {
             InitializeComponent();
 
+            MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new Login());
             //MainPage = new NavigationPage(new CategoryPage());
-            MainPage = new NavigationPage(new Login());
-
 
             UserDB = new UserDatabase(Database);
         }

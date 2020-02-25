@@ -21,7 +21,6 @@ namespace GroupApp
             if (cat != null)
             { 
             //sets category id
-<<<<<<< HEAD
             int catid = App.setCategoryID(cat.ID);
             await Navigation.PushAsync(new MapsPage());
             }
@@ -29,12 +28,6 @@ namespace GroupApp
             {
                 await DisplayAlert("Error","Please choose a major", "Ok");
             }
-=======
-            int catid = App.setCategoryID(catID);
-
-
-            await Navigation.PushAsync(new MainPage());
->>>>>>> MenuFunc
         }
 
 

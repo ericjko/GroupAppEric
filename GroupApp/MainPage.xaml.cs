@@ -17,14 +17,9 @@ namespace GroupApp
         {
             InitializeComponent();
 
-            BindingContext = Runtime.Locations;
-
             menuPage.listView.ItemSelected += OnItemSelected;
 
-            if (Device.RuntimePlatform == Device.UWP)
-            {
-                MasterBehavior = MasterBehavior.Popover;
-            }
+
         }
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

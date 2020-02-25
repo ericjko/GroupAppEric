@@ -19,7 +19,7 @@ namespace GroupApp
         public MapsPage()
         {
             InitializeComponent();
-            BindingContext = Runtime.Locations;
+            BindingContext = new PinItemsSourcePageViewModel();
         }
 
         

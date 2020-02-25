@@ -10,6 +10,7 @@ namespace GroupApp
         public MenuPage()
         {
             InitializeComponent();
+            
         }
     }
 }

@@ -4,13 +4,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:local="clr-namespace:GroupApp.ViewModels;">
     <ContentPage Title="Map">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Group"
-                     Clicked="OnGroupAddedClicked"
-                     />
-        <ToolbarItem Text="Log Off"
-                     Clicked="LogOffClicked" />
-    </ContentPage.ToolbarItems>
+    
     <StackLayout>
         <!--Displays initial map-->
          

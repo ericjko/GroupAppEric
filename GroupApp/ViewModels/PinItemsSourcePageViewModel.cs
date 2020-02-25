@@ -47,16 +47,9 @@ namespace GroupApp.ViewModels
             for (int i = 0; i < pins1.Length; i++)
             {
 
-                // Adds pins only within a 10 mile radius of coventry university
-                if (Location.CalculateDistance(covPosition, new Location(pins1[i].Latitude,pins1[i].Longitude), DistanceUnits.Miles) < 10)
-                {
+
                     _locations.Add(new Locations(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
-                }
-                //else
-                //{
-                //    LocationViewModel loc = _locations.FirstOrDefault(a => a.AutomationID == pins1[i].ID);
-                //    _locations.Remove(loc);
-                //}
+                
             }
 
         }

@@ -22,7 +22,7 @@ namespace GroupApp
             { 
             //sets category id
             int catid = App.setCategoryID(cat.ID);
-            await Navigation.PushAsync(new MapsPage());
+            await Navigation.PushAsync(new MainPage());
             }
             else
             {

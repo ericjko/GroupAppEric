@@ -10,11 +10,10 @@ namespace GroupApp
 {
     public partial class NewGroup : ContentPage
     {
-        private PinItemsSourcePageViewModel _collection;
 
-        public NewGroup(PinItemsSourcePageViewModel collection)
+        public NewGroup()
         {
-            _collection = collection;
+            
             InitializeComponent();
             
             BindingContext = new Pins();
@@ -41,9 +40,9 @@ namespace GroupApp
             //pin created gets CategoryID; to filter pins by each category
             pins.categoryID = App.getCategoryID();
 
-            //save Address,Details,Latitude,Longitude to database and observable list
-            
-            await _collection.Save(pins);
+                //save Address,Details,Latitude,Longitude to database and observable list
+
+            await Runtime.Locations.Save(pins);
 
             }
             else
@@ -51,7 +50,7 @@ namespace GroupApp
                 await DisplayAlert("Error", "Missing Address or Description", "Ok");
             }
 
-            await Navigation.PopAsync();
+            App.Current.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

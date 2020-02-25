@@ -11,11 +11,30 @@ namespace GroupApp
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : MasterDetailPage
     {
         public MainPage()
         {
             InitializeComponent();
+
+            BindingContext = Runtime.Locations;
+
+            menuPage.listView.ItemSelected += OnItemSelected;
+
+            if (Device.RuntimePlatform == Device.UWP)
+            {
+                MasterBehavior = MasterBehavior.Popover;
+            }
+        }
+        void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as MenuPageItem;
+            if (item != null)
+            {
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                menuPage.listView.SelectedItem = null;
+                IsPresented = false;
+            }
         }
     }
 }

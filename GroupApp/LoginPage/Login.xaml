@@ -50,11 +50,11 @@
 
             <Grid x:Name="RegPage" IsVisible="False">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
@@ -73,9 +73,9 @@
                 <Entry x:Name="PasswordField2" IsPassword="True"  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
 
                 <Label Text="Retype Pass" VerticalOptions="Center"  Grid.Column="0" Grid.Row="4"/>
-                 <Entry x:Name="PasswordField3" IsPassword="True"  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
+                <Entry x:Name="PasswordField3" IsPassword="True"  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
 
-                    <Button x:Name="HaveAcc" Text="Have Acc"  Grid.Row="6" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="HveBtn"/>
+                <Button x:Name="HaveAcc" Text="Have Acc"  Grid.Row="6" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="HveBtn"/>
                 <Button x:Name="Register" Text="Register"  Grid.Row="6" Grid.Column="2" VerticalOptions="FillAndExpand" Clicked="Regacc"/>
 
                 <Label x:Name="Error" Grid.Row="7" Grid.ColumnSpan="3" HorizontalOptions="Center" TextColor="Red"/>

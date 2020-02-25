@@ -1,9 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GroupApp.LoginPage.Login">
+             x:Class="GroupApp.LoginPage.Login" BackgroundColor="#F0ECEC">
+    <ContentPage.Resources>
+        <!-- Implicit styles -->
+        <Style TargetType="{x:Type Editor}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="Button"
+               ApplyToDerivedTypes="True"
+               CanCascade="True">
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="BackgroundColor" Value="#1976D2" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Padding" Value="10, 0, 10, 0"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="35">
             <Grid x:Name="LoginPage" IsVisible="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
@@ -18,12 +35,12 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label Text="Login Page" FontSize="Title" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center" />
+                <Label Text="Login Page" FontSize="Title" FontAttributes="Bold" TextColor="#1976D2" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center" />
 
-                <Label Text="Username:" VerticalOptions="Center" Grid.Column="0" Grid.Row="1"/>
-                <Entry x:Name="UsernameField"  Grid.Column="1" Grid.Row="1" VerticalOptions="FillAndExpand"/>
+                <Label Text="Username:" VerticalOptions="Center" Grid.Column="0" Grid.Row="1" />
+                <Entry x:Name="UsernameField"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
                 <Label Text="Password:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="2"/>
-                <Entry x:Name="PasswordField" IsPassword="True"  Grid.Column="1" Grid.Row="2" VerticalOptions="FillAndExpand"/>
+                <Entry x:Name="PasswordField" IsPassword="True"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
 
                 <Button x:Name="Log" Text="Login"  FontSize="Title" Grid.Row="5" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="LogBtn"/>
                 <Button x:Name="Reg" Text="Register"  Grid.Row="5" Grid.Column="2" VerticalOptions="FillAndExpand" Clicked="RegBtn"/>
@@ -46,17 +63,17 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Label Text="Register Page" FontSize="Title" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center" />
+                <Label Text="Register Page" FontSize="Title" FontAttributes="Bold" TextColor="#1976D2" Grid.Row="0" Grid.ColumnSpan="3" HorizontalOptions="Center" />
 
                 <Label Text="Username:" VerticalOptions="Center" Grid.Column="0" Grid.Row="1"/>
-                <Entry x:Name="UsernameField2"  Grid.Column="1" Grid.Row="1" VerticalOptions="FillAndExpand"/>
+                <Entry x:Name="UsernameField2"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
                 <Label Text="Email" VerticalOptions="Center" Grid.Column="0" Grid.Row="2"/>
-                <Entry x:Name="EmailField"  Grid.Column="1" Grid.Row="2" VerticalOptions="FillAndExpand"/>
+                <Entry x:Name="EmailField"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
                 <Label Text="Password:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="3"/>
-                <Entry x:Name="PasswordField2" IsPassword="True"  Grid.Column="1" Grid.Row="3" VerticalOptions="FillAndExpand"/>
+                <Entry x:Name="PasswordField2" IsPassword="True"  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
 
                 <Label Text="Retype Pass" VerticalOptions="Center"  Grid.Column="0" Grid.Row="4"/>
-                 <Entry x:Name="PasswordField3" IsPassword="True"  Grid.Column="1" Grid.Row="4" VerticalOptions="FillAndExpand"/>
+                 <Entry x:Name="PasswordField3" IsPassword="True"  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
 
                     <Button x:Name="HaveAcc" Text="Have Acc"  Grid.Row="6" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="HveBtn"/>
                 <Button x:Name="Register" Text="Register"  Grid.Row="6" Grid.Column="2" VerticalOptions="FillAndExpand" Clicked="Regacc"/>

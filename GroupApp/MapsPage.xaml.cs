@@ -79,17 +79,17 @@ namespace GroupApp
 
 
 
-        //Add new Location
-        async void OnGroupAddedClicked(object sender, EventArgs e)
-        {
+        ////Add new Location
+        //async void OnGroupAddedClicked(object sender, EventArgs e)
+        //{
 
-            await Navigation.PushAsync(new NewGroup((PinItemsSourcePageViewModel)BindingContext));
+        //    await Navigation.PushAsync(new NewGroup());
 
-        }
-        void LogOffClicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new NavigationPage(new Login());
-        }
+        //}
+        //void LogOffClicked(object sender, EventArgs e)
+        //{
+        //    App.Current.MainPage = new NavigationPage(new Login());
+        //}
 
         //Street, Satellite, Hybrid options
         void OnSliderValueChanged(object sender, ValueChangedEventArgs e)

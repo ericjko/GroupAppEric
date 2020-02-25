@@ -34,5 +34,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\ViewModelBase.cs" />
+    <Compile Remove="MenuPage.cs" />
+    <Compile Remove="Models\MenuPageItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -39,7 +39,7 @@ namespace GroupApp
             //save Address,Details,Latitude,Longitude to database and observable list
             await Runtime.Locations.Save(pins);
 
-            await Navigation.PopAsync();
+            App.Current.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

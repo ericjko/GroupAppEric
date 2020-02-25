@@ -79,7 +79,7 @@ namespace GroupApp
             {
                 if (pindatabase == null)
                 {
-                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin15.db3"));
+                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin22.db3"));
                 }
                 return pindatabase;
             }

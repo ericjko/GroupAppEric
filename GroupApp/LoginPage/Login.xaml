@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GroupApp.LoginPage.Login" BackgroundColor="#F0ECEC">
+             x:Class="GroupApp.LoginPage.Login" BackgroundColor="#F0ECEC"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <!-- Implicit styles -->
         <Style TargetType="{x:Type Editor}">
@@ -12,7 +13,8 @@
         <Style TargetType="Button"
                ApplyToDerivedTypes="True"
                CanCascade="True">
-            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="BackgroundColor" Value="#1976D2" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="CornerRadius" Value="5" />
@@ -42,8 +44,8 @@
                 <Label Text="Password:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="2"/>
                 <Entry x:Name="PasswordField" IsPassword="True"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand"/>
 
-                <Button x:Name="Log" Text="Login"  FontSize="Title" Grid.Row="5" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="LogBtn"/>
-                <Button x:Name="Reg" Text="Register"  Grid.Row="5" Grid.Column="2" VerticalOptions="FillAndExpand" Clicked="RegBtn"/>
+                <Button x:Name="Log" Text="Login"   Grid.Row="5" Grid.Column="0" VerticalOptions="FillAndExpand" Clicked="LogBtn"/>
+                <Button x:Name="Reg" Text="Sign up"  Grid.Row="5" Grid.Column="2" VerticalOptions="FillAndExpand" Clicked="RegBtn"/>
 
                 <Label x:Name="LogError" Grid.Row="6" Grid.ColumnSpan="3" HorizontalOptions="Center" TextColor="Red"/>
             </Grid>

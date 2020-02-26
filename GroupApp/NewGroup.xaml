@@ -1,20 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="#F0ECEC"
              x:Class="GroupApp.NewGroup">
-    <StackLayout>
+    <ContentPage.Resources>
+        <!-- Implicit styles -->
+        <Style TargetType="{x:Type Editor}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+        </Style>
+
+        <Style TargetType="Button"
+               ApplyToDerivedTypes="True"
+               CanCascade="True">
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="BackgroundColor" Value="#1976D2" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Padding" Value="10, 0, 10, 0"/>
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout Margin="0, 10, 0, 0">
     <Entry
         Placeholder="Enter Address"
         Text="{Binding Address}">
     </Entry>
-        <Editor
+    <Entry
         Placeholder="Enter Label"
         Text="{Binding Description}"
         >
-    </Editor>
+    </Entry>
         <Button
             Text="Save Address"
-            Clicked="onSaveAddressClick"
+            Clicked="onSaveAddressClick" FontAttributes="Bold"
             Margin="40">
         </Button>
         </StackLayout>

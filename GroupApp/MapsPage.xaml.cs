@@ -25,6 +25,44 @@ namespace GroupApp
         {
             InitializeComponent();
             BindingContext = new PinItemsSourcePageViewModel();
+
+            var locations = (PinItemsSourcePageViewModel)BindingContext;
+            //map.CustomPins = new List<CustomPin> { pin };
+            //map.Pins.Add(pin);
+            for (int i = 0; i < locations._locations.Count; i++)
+            {
+                CustomPin pin = new CustomPin
+                {
+                    Type = PinType.Place,
+                    Position = locations._locations[i].Position,
+                    Label = locations._locations[i].Description,
+                    Address = locations._locations[i].Address,
+                    Name = "Xamarin",
+                    Url = "http://xamarin.com/about/",
+                    AutomationId = locations._locations[i].AutomationID.ToString(),
+                };
+                map.IsShowingUser = true;
+                map.CustomPins = new List<CustomPin> { pin };
+
+                //map.Pins.Add(pin);
+                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(52.407243, -1.503682), Distance.FromMiles(1.0)));
+
+
+                pin.InfoWindowClicked += async (s, args) =>
+                {
+                    CustomPin singlePin = s as CustomPin;
+
+                    var groupdetailsPage = new GroupDetailsPage(new MapsPage());
+                    groupdetailsPage.BindingContext = singlePin;
+
+                    await Navigation.PushAsync(groupdetailsPage);
+                };
+            }
+            foreach (var pin in map.CustomPins)
+            {
+                map.CustomPins.Add(pin);
+                map.Pins.Add(pin);
+            }
         }
 
         protected override async void OnAppearing()
@@ -32,7 +70,7 @@ namespace GroupApp
             base.OnAppearing();
 
             //shows user current location
-            map.IsShowingUser = true;
+            
 
             //moves map to location, zooms in on current location
             //var locator = CrossGeolocator.Current;
@@ -46,46 +84,12 @@ namespace GroupApp
             //Coventry University position
 
             //Position covPosition = new Position(52.407243, -1.503682);
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(0.7)));
+            //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(0.7)));
 
 
             //For pin list
             //int catid = App.getCategoryID();
             //listView.ItemsSource = await App.PinDatabase.GetNotesAsync(catid);
-
-
-            var locations = (PinItemsSourcePageViewModel)BindingContext;
-            //map.CustomPins = new List<CustomPin> { pin };
-            //map.Pins.Add(pin);
-            for(int i=0; i < locations._locations.Count; i ++)
-            { 
-            CustomPin pin = new CustomPin
-            {
-                Type = PinType.Place,
-                Position = locations._locations[i].Position,
-                Label = locations._locations[i].Description,
-                Address = locations._locations[i].Address,
-                Name = "Xamarin",
-                Url = "http://xamarin.com/about/",
-                AutomationId = locations._locations[i].AutomationID.ToString(),
-            };
-
-                map.CustomPins = new List<CustomPin> { pin };
-                map.Pins.Add(pin);
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(52.407243, -1.503682), Distance.FromMiles(1.0)));
-
-                pin.InfoWindowClicked += async (s, args) =>
-                {
-                    CustomPin singlePin = s as CustomPin;
-
-                    var groupdetailsPage = new GroupDetailsPage(new MapsPage());
-                    groupdetailsPage.BindingContext = singlePin;
-
-                    await Navigation.PushAsync(groupdetailsPage);
-                };
-            }
-
-
 
         }
         async void PinClicked(object sender, SelectedItemChangedEventArgs e)

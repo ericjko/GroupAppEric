@@ -6,15 +6,17 @@ using Xamarin.Essentials;
 using GroupApp.Models;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GroupApp.ViewModels
 {
 
     public class PinItemsSourcePageViewModel
     {
-        readonly ObservableCollection<Locations> _locations;
+        public ObservableCollection<Locations> _locations;
 
         public IEnumerable Locations => _locations;
+
 
         //Coventry University position
 
@@ -25,11 +27,11 @@ namespace GroupApp.ViewModels
             //to populate pins based on category
             int id = App.getCategoryID();
 
-            Location covPosition = new Location(52.407243, -1.503682);
+            //Location covPosition = new Location(52.407243, -1.503682);
 
-            Location warwickPosition = new Location(52.379413, -1.561481);
+            //Location warwickPosition = new Location(52.379413, -1.561481);
 
-            double miles = Location.CalculateDistance(covPosition, warwickPosition, DistanceUnits.Miles);
+            //double miles = Location.CalculateDistance(covPosition, warwickPosition, DistanceUnits.Miles);
 
             var pins = App.PinDatabase.GetNotesAsync(id);
             //List<Pins> result = pins.Result;
@@ -42,16 +44,12 @@ namespace GroupApp.ViewModels
             };
 
             
-            
-
             for (int i = 0; i < pins1.Length; i++)
             {
-
-
-                    _locations.Add(new Locations(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
-                
+                _locations.Add(new Locations(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
             }
-
+            
+            
         }
 
         public async Task Save(Pins pin)

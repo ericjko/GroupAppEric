@@ -2,8 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupApp.MapsPage"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             xmlns:local="clr-namespace:GroupApp.ViewModels;">
-    <ContentPage.Resources>
+             xmlns:local="clr-namespace:GroupApp.Models" xmlns:local1="clr-namespace:GroupApp.Models">
+    <!--<ContentPage.Resources>
         <Style TargetType="{x:Type Editor}">
             <Setter Property="BackgroundColor"
                     Value="{StaticResource AppBackgroundColor}" />
@@ -18,41 +18,15 @@
             <Setter Property="CornerRadius" Value="5" />
             <Setter Property="Padding" Value="10, 0, 10, 0"/>
         </Style>
-    </ContentPage.Resources>
-    <ContentPage Title="Map">
-    
-    <StackLayout>
-        <!--Displays initial map-->
+    </ContentPage.Resources>-->
+    <ContentPage Title="Map"
+                 xmlns:local="clr-namespace:GroupApp.Models;assembly=GroupApp.Models">
          
-        <maps:Map x:Name="map"
-                  ItemsSource="{Binding Locations}">
-                  <maps:Map.ItemTemplate>
-                <DataTemplate>
-                    <maps:Pin Position="{Binding Position}"
-                              Address="{Binding Address}"
-                              Label="{Binding Description}"
-                              InfoWindowClicked="PinClicked"
-                              AutomationId="{Binding AutomationID}"/>
-                </DataTemplate>    
-            </maps:Map.ItemTemplate>
-        </maps:Map>
-        <Slider Margin="20,0,20,0"
-                Maximum="18"
-                Minimum="1"
-                Value="12"
-                ValueChanged="OnSliderValueChanged" />
-        <StackLayout Orientation="Horizontal"
-                     HorizontalOptions="Center"
-                     Spacing="30">
-            <Button Text="Street"
-                    Clicked="OnButtonClicked" />
-            <Button Text="Satellite"
-                    Clicked="OnButtonClicked" />
-            <Button Text="Hybrid"
-                    Clicked="OnButtonClicked" />
-        </StackLayout>
-    </StackLayout>
+        <local1:CustomMap x:Name="map"
+                         MapType="Street"
+/>
         </ContentPage>
+
     <ContentPage Title="List">
         <ContentPage.Content>
             <StackLayout>

@@ -34,7 +34,7 @@ namespace GroupApp
         {
             base.OnAppearing();
 
-            var singlePin = (Pin)BindingContext;
+            var singlePin = (CustomPin)BindingContext;
 
 
             //MarkerId test, User ID test

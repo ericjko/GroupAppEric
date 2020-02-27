@@ -102,22 +102,6 @@ namespace GroupApp
             }
         }
 
-        void OnButtonClicked(object sender, EventArgs e)
-        {
-            Button button = sender as Button;
-            switch (button.Text)
-            {
-                case "Street":
-                    map.MapType = MapType.Street;
-                    break;
-                case "Satellite":
-                    map.MapType = MapType.Satellite;
-                    break;
-                case "Hybrid":
-                    map.MapType = MapType.Hybrid;
-                    break;
-            }
-        }
         
         //public async Task Navigate(Pin pin)
         //{

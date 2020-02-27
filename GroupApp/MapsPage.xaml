@@ -21,7 +21,7 @@
     </ContentPage.Resources>-->
     <ContentPage Title="Map"
                  xmlns:local="clr-namespace:GroupApp.Models;assembly=GroupApp.Models">
-         
+
         <local1:CustomMap x:Name="map"
                          MapType="Street"
 />

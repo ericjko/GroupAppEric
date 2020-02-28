@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using GroupApp.Services;
+using System.Linq;
+using GroupApp.ViewModels;
+using Plugin.Geolocator;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using GroupApp.Models;
@@ -15,7 +17,7 @@ namespace GroupApp
 
         public ProfilePage()
         {
-
+            
             BindingContext = new ProfilePageViewModel();
             InitializeComponent();
 
@@ -26,17 +28,21 @@ namespace GroupApp
             UserNameLabel.Text = currentUser.Name;
         }
 
-        async void OnPickPhotoButtonClicked(object sender, EventArgs e)
+        /*async void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            (sender as Button).IsEnabled = false;
-
-            Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
-            if (stream != null)
+            
+            Locations loc = e.SelectedItem as Locations;
+            if (loc != null)
             {
-                image.Source = ImageSource.FromStream(() => stream);
-            }
+                CustomPin singlePin = Runtime.cMap.CustomPins.FirstOrDefault(a => a.AutomationId == loc.AutomationID.ToString());
+                if (singlePin != null)
+                {
+                    var groupdetailsPage = new GroupDetailsPage(new MapsPage());
+                    groupdetailsPage.BindingContext = singlePin;
 
-            (sender as Button).IsEnabled = true;
-        }
+                    await Navigation.PushAsync(groupdetailsPage);
+                }
+            }
+        }*/
     }
 }

@@ -4,8 +4,7 @@
 		<ScrollView>
 			<AbsoluteLayout BackgroundColor="White">
 				<BoxView BackgroundColor="Gray" AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" />
-                <Image x:Name="image"/>
-				<Button BackgroundColor="Maroon" CornerRadius="35" AbsoluteLayout.LayoutBounds=".5,55,70,70" AbsoluteLayout.LayoutFlags="XProportional" Clicked="OnPickPhotoButtonClicked" />
+				<Button BackgroundColor="Maroon" CornerRadius="35" AbsoluteLayout.LayoutBounds=".5,55,70,70" AbsoluteLayout.LayoutFlags="XProportional" />
 				<Button BackgroundColor="Red" CornerRadius="30" AbsoluteLayout.LayoutBounds=".5,60,60,60" AbsoluteLayout.LayoutFlags="XProportional" />
 				<Label x:Name="UserNameLabel" Text="User Name" FontAttributes="Bold" FontSize="26" TextColor="Black" HorizontalTextAlignment="Center" AbsoluteLayout.LayoutBounds=".5,140,1,40" AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" />
 				<AbsoluteLayout AbsoluteLayout.LayoutBounds="0,270,1,50" AbsoluteLayout.LayoutFlags="WidthProportional" Padding="5,0,0,0">
@@ -28,22 +27,15 @@
 
                         </ListView>
                     </StackLayout>
-
-
+                    
+                    
 
                 </AbsoluteLayout>
 				<!--<AbsoluteLayout AbsoluteLayout.LayoutBounds="0,370,1,50" AbsoluteLayout.LayoutFlags="WidthProportional" Padding="5,0,0,0">
-                   <Label Text="Photo Picker"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
-                    <Image x:Name="image"/>
-                   <Button Text="Add profile picture"
-                    Clicked="OnPickPhotoButtonClicked" />
+					<Label FontSize="14" Text="Ask me about:" TextColor="White" AbsoluteLayout.LayoutBounds="0,25,.25,50" AbsoluteLayout.LayoutFlags="WidthProportional" />
+					<Entry Text="Xamarin, C#, .NET, Mono" TextColor="White" BackgroundColor="Maroon" AbsoluteLayout.LayoutBounds="1,10,.75,50" AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" />
 				</AbsoluteLayout>-->
-                <AbsoluteLayout>
-                </AbsoluteLayout>
 			</AbsoluteLayout>
-
 		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

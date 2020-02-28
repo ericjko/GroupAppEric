@@ -9,7 +9,6 @@ namespace GroupApp.ViewModels
     {
         public static int PickerSelectedIndex = 0;
         public IList<Categories> _Categories { get { return CategoryData._Categories; } }
-        public IList<Categories> _Clubs { get { return ClubData._Clubs; } }
-
-    }
+		
+	}
 }

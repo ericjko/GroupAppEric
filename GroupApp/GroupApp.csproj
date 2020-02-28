@@ -30,7 +30,6 @@
     <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="LoginPage\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\ViewModelBase.cs" />

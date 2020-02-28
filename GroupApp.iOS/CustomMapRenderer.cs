@@ -66,8 +66,7 @@ namespace GroupApp.iOS
                 annotationView.CalloutOffset = new CGPoint(0, 0);
                 annotationView.LeftCalloutAccessoryView = new UIImageView(UIImage.FromFile("monkey.png"));
                 annotationView.RightCalloutAccessoryView = UIButton.FromType(UIButtonType.DetailDisclosure);
-                ((CustomMKAnnotationView)annotationView).Name = customPin.Name;
-                ((CustomMKAnnotationView)annotationView).Url = customPin.Url;
+                ((CustomMKAnnotationView)annotationView).Pin = customPin;
             }
             annotationView.CanShowCallout = true;
 
@@ -77,10 +76,12 @@ namespace GroupApp.iOS
         void OnCalloutAccessoryControlTapped(object sender, MKMapViewAccessoryTappedEventArgs e)
         {
             CustomMKAnnotationView customView = e.View as CustomMKAnnotationView;
-            if (!string.IsNullOrWhiteSpace(customView.Url))
+            customView?.Pin.DoClickEvent();
+            /*
+            if (!string.IsNullOrWhiteSpace(customView.Pin.Url))
             {
                 UIApplication.SharedApplication.OpenUrl(new Foundation.NSUrl(customView.Url));
-            }
+            }*/
         }
 
         void OnDidSelectAnnotationView(object sender, MKAnnotationViewEventArgs e)
@@ -88,7 +89,7 @@ namespace GroupApp.iOS
             CustomMKAnnotationView customView = e.View as CustomMKAnnotationView;
             customPinView = new UIView();
 
-            if (customView.Name.Equals("Xamarin"))
+            if (customView.Pin.Name.Equals("Xamarin"))
             {
                 customPinView.Frame = new CGRect(0, 0, 200, 84);
                 var image = new UIImageView(new CGRect(0, 0, 200, 84));

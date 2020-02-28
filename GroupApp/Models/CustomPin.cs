@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace GroupApp.Models
@@ -40,6 +41,18 @@ namespace GroupApp.Models
                 }
             }
 
+        }
+
+        public delegate void CustomClickHandler(object sender, PinClickedEventArgs args);
+
+        public event CustomClickHandler InfoClick;
+
+        public void DoInfoClickEvent()
+        {
+            Device.BeginInvokeOnMainThread(()=>
+            {
+                InfoClick?.Invoke(this, new PinClickedEventArgs());
+            });
         }
     }
 }

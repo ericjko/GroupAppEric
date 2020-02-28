@@ -20,10 +20,10 @@ namespace GroupApp.ViewModels
 
         //Coventry University position
 
-        private EventHandler<PinClickedEventArgs> _clickFunction;
+        private CustomPin.CustomClickHandler _clickFunction;
 
 
-        public void SetDefaultClickFunction(EventHandler<PinClickedEventArgs> click_function)
+        public void SetDefaultClickFunction(CustomPin.CustomClickHandler click_function)
         {
             if (_clickFunction != null)
             {
@@ -31,7 +31,7 @@ namespace GroupApp.ViewModels
                 {
                     try
                     {
-                        pin.InfoWindowClicked -= _clickFunction;
+                        pin.CustomClick -= _clickFunction;
                     }
                     catch(Exception)
                     {
@@ -42,7 +42,7 @@ namespace GroupApp.ViewModels
             _clickFunction = click_function;
             foreach (CustomPin pin in _locations)
             {
-                pin.InfoWindowClicked += _clickFunction;
+                pin.CustomClick += _clickFunction;
             }
         }
         public PinItemsSourcePageViewModel()
@@ -88,7 +88,7 @@ namespace GroupApp.ViewModels
             {
                 loc = new CustomPin {AutomationId = pin.userID.ToString(), Address = pin.Address, Label = pin.Description, Position = new Position(pin.Latitude, pin.Longitude)};
                 if (_clickFunction != null)
-                    loc.InfoWindowClicked += _clickFunction;
+                    loc.CustomClick += _clickFunction;
                 _locations.Add(loc);
             }
             else
@@ -106,7 +106,7 @@ namespace GroupApp.ViewModels
             if (loc != null)
             {
                 if (_clickFunction != null)
-                    loc.InfoWindowClicked -= _clickFunction;
+                    loc.CustomClick -= _clickFunction;
                 _locations.Remove(loc);
             }
         }

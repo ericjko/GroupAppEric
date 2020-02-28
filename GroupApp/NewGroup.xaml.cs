@@ -26,7 +26,6 @@ namespace GroupApp
             if (pins.Address != null && pins.Description != null)
             {
                 Geocoder geoCoder = new Geocoder();
-
             IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync(pins.Address);
             Position position = approximateLocations.FirstOrDefault();
 

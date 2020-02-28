@@ -25,7 +25,7 @@ namespace GroupApp
         {
             InitializeComponent();
             BindingContext = Runtime.Locations;
-            Runtime.Locations.SetDefaultClickFunction(PinClicked); //Add Click function to the loaded pins
+            Runtime.Locations.SetDefaultClickFunction(Pin_InfoWindowClicked); //Add Click function to the loaded pins
 
             //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(52.407243, -1.503682), Distance.FromMiles(1.0)));
 

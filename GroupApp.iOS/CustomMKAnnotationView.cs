@@ -1,12 +1,12 @@
-﻿using MapKit;
+﻿using GroupApp.Models;
+using MapKit;
 
 namespace GroupApp.iOS
 {
     public class CustomMKAnnotationView : MKAnnotationView
     {
-        public string Name { get; set; }
-
-        public string Url { get; set; }
+        
+        public CustomPin Pin { get; set; }
 
         public CustomMKAnnotationView(IMKAnnotation annotation, string id)
             : base(annotation, id)

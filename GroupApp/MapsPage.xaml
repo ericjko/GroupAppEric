@@ -19,6 +19,7 @@
             <Setter Property="Padding" Value="10, 0, 10, 0"/>
         </Style>
     </ContentPage.Resources>
+
     <ContentPage Title="Map">
     
     <StackLayout>
@@ -38,6 +39,7 @@
         </maps:Map>
     </StackLayout>
         </ContentPage>
+
     <ContentPage Title="List">
         <ContentPage.Content>
             <StackLayout>

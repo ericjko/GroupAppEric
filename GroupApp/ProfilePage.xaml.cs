@@ -7,6 +7,7 @@ using Xamarin.Forms.Maps;
 using GroupApp.Models;
 using GroupApp.LoginPage;
 using System.Threading.Tasks;
+using GroupApp.ViewModels;
 
 namespace GroupApp
 {

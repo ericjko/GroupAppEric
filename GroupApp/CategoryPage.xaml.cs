@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace GroupApp
 {
-    public partial class CategoryPage : ContentPage
+    public partial class CategoryPage : TabbedPage
     {
         public CategoryPage()
         {
@@ -18,11 +18,19 @@ namespace GroupApp
         {
             //cat holds category properties
             Categories cat = picker.SelectedItem as Categories;
-            if (cat != null)
+            Categories cat2 = picker2.SelectedItem as Categories;
+            if (cat != null || cat2 != null)
             { 
             //sets category id
-            int catid = App.setCategoryID(cat.ID);
-            await Navigation.PushAsync(new MainPage());
+                if (cat2 == null)
+                { 
+                    int catid = App.setCategoryID(cat.ID);
+                }
+                else if (cat == null)
+                {
+                    int catid = App.setCategoryID(cat2.ID);
+                }
+                await Navigation.PushAsync(new MainPage());
             }
             else
             {

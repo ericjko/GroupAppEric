@@ -69,6 +69,8 @@ namespace GroupApp.ViewModels
             for (int i = 0; i < pins1.Length; i++)
             {
                 CustomPin pin = new CustomPin {AutomationId = pins1[i].userID.ToString(), Address = pins1[i].Address, Label = pins1[i].Description, Position = new Position(pins1[i].Latitude, pins1[i].Longitude)};
+                pin.Name=pin.Label;
+                pin.Url="https://"+pin.Name;
                 _locations.Add(pin);
             }
             

@@ -27,7 +27,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="LoginPage\" />

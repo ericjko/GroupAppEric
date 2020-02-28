@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroupApp.GroupDetailsPage"
-             Title="Group Details">
+             Title="Group Details"
+             Padding="20,20,20,20">
 
     <ContentPage.Resources> 
 
@@ -22,6 +23,10 @@
 
 
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -32,6 +37,7 @@
             <Button Text="Navigate"
                     Grid.Column="1"
                     Clicked="NavigateButtonClicked"/>
+            <Button x:Name="DeleteButton" Text="DELETE" Grid.Row="1" Clicked="DeleteButton_Clicked" IsEnabled="False" Padding="0,10,0,0" Grid.ColumnSpan="2"/>
         </Grid>
     </StackLayout>
 </ContentPage>

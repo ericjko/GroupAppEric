@@ -23,24 +23,23 @@
                  xmlns:local="clr-namespace:GroupApp.Models;assembly=GroupApp.Models">
 
         <local1:CustomMap x:Name="map"
-                         MapType="Street"
-/>
+                         MapType="Street"/>
         </ContentPage>
 
     <ContentPage Title="List">
         <ContentPage.Content>
             <StackLayout>
                 <ListView x:Name="listView"
-              Margin="20"
-              ItemsSource="{Binding Locations}"
-              ItemSelected="OnListViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Description}"
+                          Margin="20"
+                          ItemsSource="{Binding Locations}"
+                          ItemSelected="OnListViewItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Description}"
                           Detail="{Binding Address}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ContentPage.Content>
 

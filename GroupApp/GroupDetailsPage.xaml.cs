@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Plugin.Geolocator;
 using GroupApp.ViewModels;
+using GroupApp.ViewModels;
 
 namespace GroupApp
 {
     public partial class GroupDetailsPage : ContentPage
     {
-        private MapsPage _maps;
+        //private MapsPage _maps;
         public GroupDetailsPage(MapsPage maps)
         {
             InitializeComponent();
+
+
+            
+            
             
         }
         void OnJoinButtonClicked(object sender, EventArgs e)
@@ -36,6 +41,11 @@ namespace GroupApp
 
             var singlePin = (CustomPin)BindingContext;
 
+            int currentUserId = App.getUserID();
+            if (currentUserId == Int16.Parse(singlePin.AutomationId))
+            {
+                DeleteButton.IsEnabled = true;
+            }
 
             //MarkerId test, User ID test
             await DisplayAlert($"{singlePin.MarkerId}", "User ID " + $"{singlePin.AutomationId}", "Ok");
@@ -52,6 +62,13 @@ namespace GroupApp
                 Name = singlePin.Address,
                 NavigationMode = NavigationMode.Walking
             });
+        }
+
+        private void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            var pins = (Pin)BindingContext;
+
+            
         }
     }
 }

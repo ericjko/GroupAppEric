@@ -15,17 +15,22 @@ namespace GroupApp.ViewModels
     {
         public ObservableCollection<Locations> _locations;
 
+        //public ObservableCollection<Locations> _LocationsCreated;
+
         public IEnumerable Locations => _locations;
+
+        //public IEnumerable LocationsCreated => _LocationsCreated;
 
 
         //Coventry University position
 
-        
+
 
         public PinItemsSourcePageViewModel()
         {
             //to populate pins based on category
             int id = App.getCategoryID();
+            
 
             //Location covPosition = new Location(52.407243, -1.503682);
 
@@ -33,6 +38,9 @@ namespace GroupApp.ViewModels
 
             //double miles = Location.CalculateDistance(covPosition, warwickPosition, DistanceUnits.Miles);
 
+            //var UserPins = App.PinDatabase.GetPinsCreated(currentUserId);
+
+            //Pins[] UserPins1 = UserPins.Result.ToArray();
             var pins = App.PinDatabase.GetNotesAsync(id);
             //List<Pins> result = pins.Result;
             Pins[] pins1 = pins.Result.ToArray();
@@ -48,6 +56,11 @@ namespace GroupApp.ViewModels
             {
                 _locations.Add(new Locations(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
             }
+
+           // for(int i = 0; i < UserPins1.Length; i++)
+           // {
+           //     _LocationsCreated.Add(new Locations(UserPins1[i].userID, UserPins1[i].Address, UserPins1[i].Description, new Position(UserPins1[i].Latitude, UserPins1[i].Longitude)));
+           // }
             
             
         }

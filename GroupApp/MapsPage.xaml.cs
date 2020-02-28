@@ -18,7 +18,7 @@ namespace GroupApp
         string description;
         string address;
         Position position;
-
+        
         //public bool IsShowingUser { get; set; }
 
         public MapsPage()
@@ -30,6 +30,8 @@ namespace GroupApp
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            
 
             //shows user current location
             map.IsShowingUser = true;

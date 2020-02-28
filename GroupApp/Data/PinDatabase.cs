@@ -22,6 +22,12 @@ namespace GroupApp.Data
                             .ToListAsync();
         }
 
+        public Task<List<Pins>> GetPinsCreated(int currentUserId)
+        {
+            return _database.Table<Pins>().Where(i => i.userID == currentUserId)
+                            .ToListAsync();
+        }
+
         public Task<Pins> GetNoteAsync(int id)
         {
             return _database.Table<Pins>()

@@ -1,11 +1,45 @@
 ﻿using System;
+using System.ComponentModel;
 using Xamarin.Forms.Maps;
 
 namespace GroupApp.Models
 {
-    public class CustomPin : Pin
+    public class CustomPin : Pin, INotifyPropertyChanged
     {
-        public string Name { get; set; }
-        public string Url { get; set; }
+        
+
+        private string _name = "";
+        private string _url = "";
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Name
+        {
+            get => _name;
+            //to edit
+            set
+            {
+                if (!_name.Equals(value))
+                {
+                    _name = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+                }
+            }
+        }
+
+        public string Url
+        {
+            get => _url;
+            //to edit
+            set
+            {
+                if (!_url.Equals(value))
+                {
+                    _url = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Url)));
+                }
+            }
+
+        }
     }
 }

@@ -33,6 +33,7 @@
     <Folder Include="LoginPage\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="ViewModels\LocationViewModel.cs" />
     <Compile Remove="ViewModels\ViewModelBase.cs" />
     <Compile Remove="MenuPage.cs" />
     <Compile Remove="Models\MenuPageItem.cs" />

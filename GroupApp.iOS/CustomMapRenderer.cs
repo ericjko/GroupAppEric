@@ -17,7 +17,7 @@ namespace GroupApp.iOS
     public class CustomMapRenderer : MapRenderer
     {
         UIView customPinView;
-        List<CustomPin> customPins;
+        CustomMap customMap;
 
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
@@ -36,7 +36,7 @@ namespace GroupApp.iOS
             {
                 var formsMap = (CustomMap)e.NewElement;
                 var nativeMap = Control as MKMapView;
-                customPins = formsMap.CustomPins;
+                customMap = formsMap;
 
                 nativeMap.GetViewForAnnotation = GetViewForAnnotation;
                 nativeMap.CalloutAccessoryControlTapped += OnCalloutAccessoryControlTapped;
@@ -114,7 +114,7 @@ namespace GroupApp.iOS
             
             
             var position = new Position(annotation.Coordinate.Latitude, annotation.Coordinate.Longitude);
-            foreach (var pin in customPins)
+            foreach (var pin in customMap.CustomPins)
             {
                 if (pin.Position == position)
                 {

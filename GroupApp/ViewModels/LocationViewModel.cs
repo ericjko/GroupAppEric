@@ -4,7 +4,7 @@ using Xamarin.Forms.Maps;
 
 namespace GroupApp.ViewModels
 {
-    public class Locations: INotifyPropertyChanged
+    public class Locations : INotifyPropertyChanged
     {
         Position _position;
         private string _address = "";

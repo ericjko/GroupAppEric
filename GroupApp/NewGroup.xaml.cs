@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using GroupApp.ViewModels;
 using System.IO;
+using System.Threading.Tasks;
 using GroupApp.Services;
 
 namespace GroupApp
@@ -61,23 +62,26 @@ namespace GroupApp
 
             (sender as Button).IsEnabled = false;
 
-            Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
-            if (stream != null)
+            using (Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync())
             {
-                image.Source = ImageSource.FromStream(() => stream);
+                if (stream != null)
+                {
+                    //First we copy the stream to a MemoryStream. int this way we can provide both, the image Source, and the byte array.
+                    MemoryStream ms = new MemoryStream();
+                    await stream.CopyToAsync(ms);
+                    //Reset stream position
+                    ms.Position = 0;
+                    image.Source = ImageSource.FromStream(() => ms);
+                    pins.ImageData = ms.ToArray();
+                }
+               
+               
             }
-
             (sender as Button).IsEnabled = true;
 
-            Stream stream1 = stream;
-
-            byte[] byteImage = GetImageStreamAsBytes(stream1);
-
-            pins.ImageData = byteImage;
-
-
-
         }
+        //no longer required
+        /*
         public byte[] GetImageStreamAsBytes(Stream input)
         {
             var buffer = new byte[16 * 1024];
@@ -91,5 +95,6 @@ namespace GroupApp
                 return ms.ToArray();
             }
         }
+        */
     }
 }

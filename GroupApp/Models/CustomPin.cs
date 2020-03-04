@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace GroupApp.Models
@@ -9,7 +10,7 @@ namespace GroupApp.Models
         private string _group = "";
         private string _name = "";
         private string _url = "";
-        private byte[] _imagedata;
+        private ImageSource _imagedata;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -54,7 +55,7 @@ namespace GroupApp.Models
             }
 
         }
-        public byte[] ImageData
+        public ImageSource ImageData
         {
             get => _imagedata;
             //to edit

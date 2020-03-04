@@ -7,6 +7,8 @@ using GroupApp.Models;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using Xamarin.Forms;
 
 namespace GroupApp.ViewModels
 {
@@ -60,8 +62,12 @@ namespace GroupApp.ViewModels
                     Address = pins1[i].Address,
                     Label = pins1[i].Description,
                     Position = new Position(pins1[i].Latitude, pins1[i].Longitude),
-                    ImageData = pins1[i].ImageData,
+                    
                 };
+                if (pins1[i].ImageData != null && pins1[i].ImageData.Length > 0)
+                {
+                    pin.ImageData=ImageSource.FromStream(()=>new MemoryStream(pins1[i].ImageData));
+                }
                 pin.Group=pin.Label;
                 pin.Url="https://"+pin.Group;
                 pin.Name = App.UserDB.getUserById(App.getUserID()).ToString();

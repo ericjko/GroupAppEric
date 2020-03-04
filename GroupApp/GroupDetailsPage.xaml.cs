@@ -47,7 +47,8 @@ namespace GroupApp
             //MarkerId test, User ID test
             await DisplayAlert($"{singlePin.MarkerId}", "User ID " + $"{singlePin.AutomationId}", "Ok");
 
-            image.Source = ImageSource.FromStream(() => new MemoryStream(singlePin.ImageData));
+            image.Source = singlePin.ImageData;
+
 
         }
 

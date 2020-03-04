@@ -23,7 +23,8 @@
                  xmlns:local="clr-namespace:GroupApp.Models;assembly=GroupApp.Models">
 
         <local1:CustomMap x:Name="map"
-                         MapType="Street"/>
+                         MapType="Street"
+                          CustomPins="{Binding Locations}"/>
         </ContentPage>
 
     <ContentPage Title="List">
@@ -35,7 +36,7 @@
                           ItemSelected="OnListViewItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Description}"
+                            <TextCell Text="{Binding Label}"
                           Detail="{Binding Address}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>

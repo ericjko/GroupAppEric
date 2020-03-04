@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Plugin.Geolocator;
 using GroupApp.ViewModels;
-using GroupApp.ViewModels;
+using System.IO;
 
 namespace GroupApp
 {
@@ -17,11 +17,8 @@ namespace GroupApp
         public GroupDetailsPage(MapsPage maps)
         {
             InitializeComponent();
-
-
-            
-            
-            
+            BindingContext = new CustomPin();
+            var pin = (CustomPin)BindingContext;
         }
         void OnJoinButtonClicked(object sender, EventArgs e)
         {
@@ -49,6 +46,9 @@ namespace GroupApp
 
             //MarkerId test, User ID test
             await DisplayAlert($"{singlePin.MarkerId}", "User ID " + $"{singlePin.AutomationId}", "Ok");
+
+            image.Source = ImageSource.FromStream(() => new MemoryStream(singlePin.ImageData));
+
         }
 
         public async void NavigateButtonClicked(object sender, EventArgs e)
@@ -67,8 +67,24 @@ namespace GroupApp
         private void DeleteButton_Clicked(object sender, EventArgs e)
         {
             var pins = (Pin)BindingContext;
-
-            
         }
+        async private void OnChatClicked(object sender, EventArgs e)
+        {
+            var singlePin = (CustomPin)BindingContext;
+            //var pin = Runtime.Locations;
+            //singlePin.Name = pin.Locations.GetType().Name;
+            User user = App.UserDB.getUserById(Int16.Parse(singlePin.AutomationId));
+
+
+            App.setUserName(user.Name);
+            App.setUserGroup(singlePin.Group);
+            
+            var chatPage = new ChatPage();
+            
+
+            await Navigation.PushAsync(chatPage);
+
+        }
+
     }
 }

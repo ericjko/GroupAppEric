@@ -17,6 +17,7 @@
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.3.0.908675" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.2" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
@@ -31,11 +32,13 @@
     <Folder Include="Models\" />
     <Folder Include="LoginPage\" />
     <Folder Include="Services\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\ViewModelBase.cs" />
     <Compile Remove="MenuPage.cs" />
     <Compile Remove="Models\MenuPageItem.cs" />
+    <Compile Remove="ViewModels\LocationViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="MenuPage.xaml.cs">

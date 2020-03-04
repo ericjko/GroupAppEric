@@ -16,7 +16,6 @@ namespace GroupApp
 
         public ProfilePage()
         {
-
             BindingContext = new ProfilePageViewModel();
             InitializeComponent();
 

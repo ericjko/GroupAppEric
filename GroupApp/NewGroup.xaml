@@ -26,13 +26,18 @@
     </Entry>
     <Entry
         Placeholder="Enter Label"
-        Text="{Binding Description}"
-        >
+        Text="{Binding Description}">
     </Entry>
         <Button
             Text="Save Address"
             Clicked="onSaveAddressClick" FontAttributes="Bold"
             Margin="40">
         </Button>
+        <Button Text="Pick Photo"
+        Clicked="OnPickPhotoButtonClicked" />
+
+                <Image x:Name="image"/>
         </StackLayout>
+
+
 </ContentPage>

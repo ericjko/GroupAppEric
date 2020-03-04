@@ -15,8 +15,11 @@ namespace GroupApp
         static int userId;
         static int catId;
         static string userEmail;
+        static string userGroup;
+        static string userName;
 
-        string Database => AccessFile.FilePath("db6");
+
+        string Database => AccessFile.FilePath("db8");
         public static UserDatabase UserDB { get; private set; }
 
         public App()
@@ -69,6 +72,26 @@ namespace GroupApp
             userEmail = email;
             return email;
         }
+        public static string getUserGroup()
+        {
+            return userGroup;
+        }
+
+        public static string setUserGroup(string group)
+        {
+            userGroup = group;
+            return group;
+        }
+        public static string getUserName()
+        {
+            return userName;
+        }
+
+        public static string setUserName(string name)
+        {
+            userName = name;
+            return name;
+        }
 
 
         static PinDatabase pindatabase;
@@ -79,7 +102,7 @@ namespace GroupApp
             {
                 if (pindatabase == null)
                 {
-                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin31.db3"));
+                    pindatabase = new PinDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Pin33.db3"));
                 }
                 return pindatabase;
             }

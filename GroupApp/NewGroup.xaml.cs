@@ -5,6 +5,8 @@ using GroupApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using GroupApp.ViewModels;
+using System.IO;
+using GroupApp.Services;
 
 namespace GroupApp
 {
@@ -51,6 +53,43 @@ namespace GroupApp
             }
 
             App.Current.MainPage = new NavigationPage(new MainPage());
+        }
+        async void OnPickPhotoButtonClicked(object sender, EventArgs e)
+        {
+            
+            var pins = (Pins)BindingContext;
+
+            (sender as Button).IsEnabled = false;
+
+            Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
+            if (stream != null)
+            {
+                image.Source = ImageSource.FromStream(() => stream);
+            }
+
+            (sender as Button).IsEnabled = true;
+
+            Stream stream1 = stream;
+
+            byte[] byteImage = GetImageStreamAsBytes(stream1);
+
+            pins.ImageData = byteImage;
+
+
+
+        }
+        public byte[] GetImageStreamAsBytes(Stream input)
+        {
+            var buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
         }
     }
 }

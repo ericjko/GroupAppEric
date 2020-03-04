@@ -13,7 +13,7 @@ namespace GroupApp.ViewModels
 
     public class PinItemsSourcePageViewModel
     {
-        public ObservableCollection<Locations> _locations;
+        public ObservableCollection<CustomPin> _locations;
 
         //public ObservableCollection<Locations> _LocationsCreated;
 
@@ -22,7 +22,7 @@ namespace GroupApp.ViewModels
         //public IEnumerable LocationsCreated => _LocationsCreated;
 
 
-        //Coventry University position
+        private EventHandler<PinClickedEventArgs> _clickFunction;
 
 
 
@@ -44,7 +44,7 @@ namespace GroupApp.ViewModels
             var pins = App.PinDatabase.GetNotesAsync(id);
             //List<Pins> result = pins.Result;
             Pins[] pins1 = pins.Result.ToArray();
-            _locations = new ObservableCollection<Locations>()
+            _locations = new ObservableCollection<CustomPin>()
             {
                 //new Location(0,"New York, USA", "The City That Never Sleeps", new Position(40.67, -73.94)),
                 //new Location(0,"Los Angeles, USA", "City of Angels", new Position(34.11, -118.41)),
@@ -54,7 +54,19 @@ namespace GroupApp.ViewModels
             
             for (int i = 0; i < pins1.Length; i++)
             {
-                _locations.Add(new Locations(pins1[i].userID, pins1[i].Address, pins1[i].Description, new Position(pins1[i].Latitude, pins1[i].Longitude)));
+                CustomPin pin = new CustomPin
+                {
+                    AutomationId = pins1[i].userID.ToString(),
+                    Address = pins1[i].Address,
+                    Label = pins1[i].Description,
+                    Position = new Position(pins1[i].Latitude, pins1[i].Longitude),
+                    ImageData = pins1[i].ImageData,
+                };
+                pin.Group=pin.Label;
+                pin.Url="https://"+pin.Group;
+                pin.Name = App.UserDB.getUserById(App.getUserID()).ToString();
+                
+                _locations.Add(pin);
             }
 
            // for(int i = 0; i < UserPins1.Length; i++)
@@ -64,23 +76,52 @@ namespace GroupApp.ViewModels
             
             
         }
+        public void SetDefaultClickFunction(EventHandler<PinClickedEventArgs> click_function)
+        {
+            if (_clickFunction != null)
+            {
+                foreach (CustomPin pin in _locations)
+                {
+                    try
+                    {
+                        pin.InfoWindowClicked -= _clickFunction;
+                    }
+                    catch (Exception)
+                    {
+                        //do nothing
+                    }
+                }
+            }
+            _clickFunction = click_function;
+            foreach (CustomPin pin in _locations)
+            {
+                pin.InfoWindowClicked += _clickFunction;
+            }
+        }
 
         public async Task Save(Pins pin)
         {
             await App.PinDatabase.SaveNoteAsync(pin); //adds to database, database will also update/add after checking if already exists.
 
             //First check if this is an edit or an add.
-            Locations loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
+            CustomPin loc = _locations.FirstOrDefault(a => a.AutomationId == pin.ID.ToString());
 
             if (loc == null)
             {
-                loc = new Locations(pin.userID, pin.Address, pin.Description, new Position(pin.Latitude, pin.Longitude));
+                loc = new CustomPin
+                {
+                    AutomationId = pin.userID.ToString(),
+                    Address = pin.Address,
+                    Label = pin.Description,
+                    Position = new Position(pin.Latitude, pin.Longitude)
+                };
+
                 _locations.Add(loc);
             }
             else
             {
                 loc.Address = pin.Address;
-                loc.Description = pin.Description;
+                loc.Label = pin.Description;
                 loc.Position = new Position(pin.Latitude, pin.Longitude);
             }
         }
@@ -88,7 +129,7 @@ namespace GroupApp.ViewModels
         public async Task Remove(Pins pin)
         {
             await App.PinDatabase.DeleteNoteAsync(pin);
-            Locations loc = _locations.FirstOrDefault(a => a.AutomationID == pin.ID);
+            CustomPin loc = _locations.FirstOrDefault(a => a.AutomationId == pin.ID.ToString());
             if (loc != null)
                 _locations.Remove(loc);
         }

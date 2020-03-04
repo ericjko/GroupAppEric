@@ -12,7 +12,7 @@ namespace GroupApp.ViewModels
 {
     public class ProfilePageViewModel
     {
-        public ObservableCollection<Locations> _LocationsCreated;
+        public ObservableCollection<CustomPin> _LocationsCreated;
 
         public IEnumerable LocationsCreated => _LocationsCreated;
 
@@ -24,11 +24,18 @@ namespace GroupApp.ViewModels
 
             Pins[] UserPins1 = UserPins.Result.ToArray();
 
-            _LocationsCreated = new ObservableCollection<Locations>();
+            _LocationsCreated = new ObservableCollection<CustomPin>();
 
             for (int i = 0; i < UserPins1.Length; i++)
             {
-                _LocationsCreated.Add(new Locations(UserPins1[i].userID, UserPins1[i].Address, UserPins1[i].Description, new Position(UserPins1[i].Latitude, UserPins1[i].Longitude)));
+                CustomPin pin = new CustomPin
+                {
+                    AutomationId = UserPins1[i].userID.ToString(),
+                    Address = UserPins1[i].Address,
+                    Label = UserPins1[i].Description,
+                    Position = new Position(UserPins1[i].Latitude, UserPins1[i].Longitude)
+                };
+                _LocationsCreated.Add(pin);
             }
         }
     }

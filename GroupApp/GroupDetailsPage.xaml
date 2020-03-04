@@ -20,8 +20,6 @@
     <StackLayout>
         <Label Text="Group name:"/>
         <Label Text="Group details"/>
-
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -39,5 +37,8 @@
                     Clicked="NavigateButtonClicked"/>
             <Button x:Name="DeleteButton" Text="DELETE" Grid.Row="1" Clicked="DeleteButton_Clicked" IsEnabled="False" Padding="0,10,0,0" Grid.ColumnSpan="2"/>
         </Grid>
+        <Image x:Name="image"/>
+        <Button Text="Chat"
+                    Clicked="OnChatClicked"/>
     </StackLayout>
 </ContentPage>

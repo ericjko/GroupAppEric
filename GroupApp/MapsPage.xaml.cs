@@ -25,6 +25,8 @@ namespace GroupApp
         {
             InitializeComponent();
             BindingContext = new PinItemsSourcePageViewModel();
+            var loadedPins = (PinItemsSourcePageViewModel)BindingContext;
+            loadedPins.SetDefaultClickFunction(Pin_InfoWindowClicked); //Add Click function to the loaded pins
         }
 
         protected override async void OnAppearing()
@@ -48,51 +50,17 @@ namespace GroupApp
             //Coventry University position
 
             //Position covPosition = new Position(52.407243, -1.503682);
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(0.7)));
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(52.407243, -1.503682), Distance.FromMiles(0.7)));
 
 
             //For pin list
             //int catid = App.getCategoryID();
             //listView.ItemsSource = await App.PinDatabase.GetNotesAsync(catid);
 
-
-            var locations = (PinItemsSourcePageViewModel)BindingContext;
-            //map.CustomPins = new List<CustomPin> { pin };
-            //map.Pins.Add(pin);
-            for(int i=0; i < locations._locations.Count; i ++)
-            { 
-            CustomPin pin = new CustomPin
-            {
-                Type = PinType.Place,
-                Position = locations._locations[i].Position,
-                Label = locations._locations[i].Description,
-                Address = locations._locations[i].Address,
-                Name = "Xamarin",
-                Url = "http://xamarin.com/about/",
-                AutomationId = locations._locations[i].AutomationID.ToString(),
-            };
-
-                map.CustomPins = new List<CustomPin> { pin };
-                map.Pins.Add(pin);
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(52.407243, -1.503682), Distance.FromMiles(1.0)));
-
-                pin.InfoWindowClicked += async (s, args) =>
-                {
-                    CustomPin singlePin = s as CustomPin;
-
-                    var groupdetailsPage = new GroupDetailsPage(new MapsPage());
-                    groupdetailsPage.BindingContext = singlePin;
-
-                    await Navigation.PushAsync(groupdetailsPage);
-                };
-            }
-
-
-
         }
-        async void PinClicked(object sender, SelectedItemChangedEventArgs e)
+        private async void Pin_InfoWindowClicked(object sender, PinClickedEventArgs e)
         {
-            Pin singlePin = sender as Pin;
+            CustomPin singlePin = sender as CustomPin;
 
             var groupdetailsPage = new GroupDetailsPage(new MapsPage());
             groupdetailsPage.BindingContext = singlePin;
@@ -101,17 +69,14 @@ namespace GroupApp
         }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Locations loc = e.SelectedItem as Locations;
+            CustomPin loc = e.SelectedItem as CustomPin;
             if (loc != null)
             {
-                CustomPin singlePin = map.CustomPins.FirstOrDefault(a => a.AutomationId == loc.AutomationID.ToString());
-                if (singlePin != null)
-                {
-                    var groupdetailsPage = new GroupDetailsPage(new MapsPage());
-                    groupdetailsPage.BindingContext = singlePin;
+                var groupdetailsPage = new GroupDetailsPage(new MapsPage());
+                groupdetailsPage.BindingContext = loc;
 
-                    await Navigation.PushAsync(groupdetailsPage);
-                }
+                await Navigation.PushAsync(groupdetailsPage);
+                
             }
         }
 

@@ -66,7 +66,8 @@ namespace GroupApp.ViewModels
                 };
                 if (pins1[i].ImageData != null && pins1[i].ImageData.Length > 0)
                 {
-                    pin.ImageData=ImageSource.FromStream(()=>new MemoryStream(pins1[i].ImageData));
+                    byte[] data = pins1[i].ImageData;
+                    pin.ImageData=ImageSource.FromStream(()=>new MemoryStream(data));
                 }
                 pin.Group=pin.Label;
                 pin.Url="https://"+pin.Group;

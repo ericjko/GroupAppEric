@@ -37,8 +37,12 @@
                     Clicked="NavigateButtonClicked"/>
             <Button x:Name="DeleteButton" Text="DELETE" Grid.Row="1" Clicked="DeleteButton_Clicked" IsEnabled="False" Padding="0,10,0,0" Grid.ColumnSpan="2"/>
         </Grid>
-        <Image x:Name="image"/>
+        <Grid 
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Image x:Name="image" Aspect="AspectFit" />
+        </Grid>
         <Button Text="Chat"
-                    Clicked="OnChatClicked"/>
+                Clicked="OnChatClicked"/>
     </StackLayout>
 </ContentPage>
